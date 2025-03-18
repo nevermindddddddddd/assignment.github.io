@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap - Zero Hunger Initiative</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .sitemap-header {
+            background-color: var(--primary-light);
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .sitemap-container {
+            background-color: var(--neutral-100);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: auto;
+        }
+
+        svg {
+            display: block;
+            margin: 0 auto;
+            max-width: 100%;
+            height: auto;
+        }
+
+        .node {
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .node:hover .node-bg {
+            fill: var(--primary);
+        }
+
+        .node:hover .node-text {
+            fill: var(--neutral-900);
+        }
+
+        .node-text {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-size: 14px;
+            text-anchor: middle;
+            dominant-baseline: middle;
+            pointer-events: none;
+        }
+
+        .link {
+            stroke: var(--neutral-600);
+            stroke-width: 2;
+        }
+
+        @media (max-width: 768px) {
+            .sitemap-container {
+                padding: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/placeholder.svg?height=50&width=50" alt="Zero Hunger Logo">
+                    <h1>Zero Hunger Initiative</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="table.html">Programs</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="sitemap.html" class="active">Sitemap</a></li>
+                        <li><a href="team.html">Team</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="sitemap-header">
+            <div class="container">
+                <h1>Website Sitemap</h1>
+                <p>Navigate through our website structure to find the information you need.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="sitemap-container">
+                <svg width="900" height="600" viewBox="0 0 900 600" tabindex="0">
+                    <!-- Links (Draw these first so they appear behind nodes) -->
+                    <!-- Home to main pages -->
+                    <line class="link" x1="450" y1="100" x2="200" y2="200"></line>
+                    <line class="link" x1="450" y1="100" x2="350" y2="200"></line>
+                    <line class="link" x1="450" y1="100" x2="450" y2="200"></line>
+                    <line class="link" x1="450" y1="100" x2="550" y2="200"></line>
+                    <line class="link" x1="450" y1="100" x2="700" y2="200"></line>
+                    
+                    <!-- Content pages from home -->
+                    <line class="link" x1="450" y1="100" x2="200" y2="300"></line>
+                    <line class="link" x1="450" y1="100" x2="350" y2="300"></line>
+                    <line class="link" x1="450" y1="100" x2="550" y2="300"></line>
+                    <line class="link" x1="450" y1="100" x2="700" y2="300"></line>
+                    
+                    <!-- Editor pages -->
+                    <line class="link" x1="450" y1="100" x2="200" y2="400"></line>
+                    <line class="link" x1="450" y1="100" x2="350" y2="400"></line>
+                    <line class="link" x1="450" y1="100" x2="550" y2="400"></line>
+                    <line class="link" x1="450" y1="100" x2="700" y2="400"></line>
+                    
+                    <!-- Validation pages -->
+                    <line class="link" x1="450" y1="100" x2="200" y2="500"></line>
+                    <line class="link" x1="450" y1="100" x2="350" y2="500"></line>
+                    <line class="link" x1="450" y1="100" x2="550" y2="500"></line>
+                    <line class="link" x1="450" y1="100" x2="700" y2="500"></line>
+                    
+                    <!-- Splash to Home -->
+                    <line class="link" x1="450" y1="50" x2="450" y2="100"></line>
+                    
+                    <!-- Nodes -->
+                    <!-- Splash Screen -->
+                    <a href="splash.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="450" cy="50" r="30" fill="#e5b700"></circle>
+                        <text class="node-text" x="450" y="50" fill="#212121">Splash</text>
+                    </a>
+                    
+                    <!-- Home -->
+                    <a href="home.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="450" cy="100" r="30" fill="#e5b700"></circle>
+                        <text class="node-text" x="450" y="100" fill="#212121">Home</text>
+                    </a>
+                    
+                    <!-- Main Pages Row 1 -->
+                    <a href="volunteer.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="200" cy="200" r="30" fill="#f4d35e"></circle>
+                        <text class="node-text" x="200" y="200" fill="#212121">Volunteer</text>
+                    </a>
+                    
+                    <a href="table.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="350" cy="200" r="30" fill="#f4d35e"></circle>
+                        <text class="node-text" x="350" y="200" fill="#212121">Programs</text>
+                    </a>
+                    
+                    <a href="profile.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="450" cy="200" r="30" fill="#f4d35e"></circle>
+                        <text class="node-text" x="450" y="200" fill="#212121">Profile</text>
+                    </a>
+                    
+                    <a href="feedback.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="550" cy="200" r="30" fill="#f4d35e"></circle>
+                        <text class="node-text" x="550" y="200" fill="#212121">Feedback</text>
+                    </a>
+                    
+                    <a href="team.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="700" cy="200" r="30" fill="#f4d35e"></circle>
+                        <text class="node-text" x="700" y="200" fill="#212121">Team</text>
+                    </a>
+                    
+                    <!-- Content Pages Row 2 -->
+                    <a href="content_ST1.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="200" cy="300" r="30" fill="#19486a"></circle>
+                        <text class="node-text" x="200" y="300" fill="#ffffff">Content 1</text>
+                    </a>
+                    
+                    <a href="content_ST2.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="350" cy="300" r="30" fill="#19486a"></circle>
+                        <text class="node-text" x="350" y="300" fill="#ffffff">Content 2</text>
+                    </a>
+                    
+                    <a href="content_ST3.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="550" cy="300" r="30" fill="#19486a"></circle>
+                        <text class="node-text" x="550" y="300" fill="#ffffff">Content 3</text>
+                    </a>
+                    
+                    <a href="content_ST4.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="700" cy="300" r="30" fill="#19486a"></circle>
+                        <text class="node-text" x="700" y="300" fill="#ffffff">Content 4</text>
+                    </a>
+                    
+                    <!-- Editor Pages Row 3 -->
+                    <a href="pageEditor_ST1.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="200" cy="400" r="30" fill="#2a6a9e"></circle>
+                        <text class="node-text" x="200" y="400" fill="#ffffff">Editor 1</text>
+                    </a>
+                    
+                    <a href="pageEditor_ST2.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="350" cy="400" r="30" fill="#2a6a9e"></circle>
+                        <text class="node-text" x="350" y="400" fill="#ffffff">Editor 2</text>
+                    </a>
+                    
+                    <a href="pageEditor_ST3.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="550" cy="400" r="30" fill="#2a6a9e"></circle>
+                        <text class="node-text" x="550" y="400" fill="#ffffff">Editor 3</text>
+                    </a>
+                    
+                    <a href="pageEditor_ST4.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="700" cy="400" r="30" fill="#2a6a9e"></circle>
+                        <text class="node-text" x="700" y="400" fill="#ffffff">Editor 4</text>
+                    </a>
+                    
+                    <!-- Validation Pages Row 4 -->
+                    <a href="validation_ST1.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="200" cy="500" r="30" fill="#616161"></circle>
+                        <text class="node-text" x="200" y="500" fill="#ffffff">Valid 1</text>
+                    </a>
+                    
+                    <a href="validation_ST2.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="350" cy="500" r="30" fill="#616161"></circle>
+                        <text class="node-text" x="350" y="500" fill="#ffffff">Valid 2</text>
+                    </a>
+                    
+                    <a href="validation_ST3.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="550" cy="500" r="30" fill="#616161"></circle>
+                        <text class="node-text" x="550" y="500" fill="#ffffff">Valid 3</text>
+                    </a>
+                    
+                    <a href="validation_ST4.html" class="node" tabindex="0">
+                        <circle class="node-bg" cx="700" cy="500" r="30" fill="#616161"></circle>
+                        <text class="node-text" x="700" y="500" fill="#ffffff">Valid 4</text>
+                    </a>
+                </svg>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Zero Hunger Initiative</h3>
+                    <p>Working together to achieve SDG 2: Zero Hunger by 2030.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="table.html">Programs</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Page Editors</h3>
+                    <ul>
+                        <li><a href="pageEditor_ST1.html">Student 1</a></li>
+                        <li><a href="pageEditor_ST2.html">Student 2</a></li>
+                        <li><a href="pageEditor_ST3.html">Student 3</a></li>
+                        <li><a href="pageEditor_ST4.html">Student 4</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Zero Hunger Initiative. All rights reserved.</p>
+                <p>This page is maintained by <a href="pageEditor_ST4.html">Student 4</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

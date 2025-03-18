@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="refresh" content="4;url=home.html">
+    <title>Zero Hunger Initiative</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background-image: url('/placeholder.svg?height=1080&width=1920');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.6);
+            z-index: -1;
+        }
+
+        .splash-content {
+            max-width: 800px;
+            padding: 2rem;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        p {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .team-members {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+        }
+
+        .loader {
+            margin-top: 3rem;
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+            border-radius: 50%;
+            border-top-color: var(--primary);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="splash-content">
+        <h1>Zero Hunger Initiative</h1>
+        <p>Working together to end hunger, achieve food security, improve nutrition, and promote sustainable agriculture by 2030.</p>
+        
+        <div class="team-members">
+            <h2>Team Members</h2>
+            <p>Yusuke • Arnav • Pranav • Ayur</p>
+        </div>
+        
+        <!-- Animated loader -->
+       <center> <div class="loader" aria-label="Loading, please wait"></div>
+    </div></center>
+</body>
+</html>

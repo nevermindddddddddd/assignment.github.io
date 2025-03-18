@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team - Zero Hunger Initiative</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .team-header {
+            background-color: var(--primary-light);
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .team-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem;
+        }
+
+        .team-member {
+            position: relative;
+            width: 250px;
+            perspective: 1000px;
+        }
+
+        .team-thumbnail {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid var(--primary);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: block;
+            margin: 0 auto;
+        }
+
+        .team-thumbnail:hover {
+            transform: scale(1.05);
+            border-color: var(--secondary);
+            opacity: 0.9;
+        }
+
+        .team-details {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            width: 100%;
+            background-color: var(--neutral-100);
+            border-radius: 8px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transform: translateY(20px);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+
+        .team-member:hover .team-details {
+            transform: translateY(10px);
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .team-name {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .team-role {
+            font-size: 1rem;
+            color: var(--neutral-600);
+            margin-bottom: 1rem;
+        }
+
+        .team-contributions {
+            margin-top: 1rem;
+        }
+
+        .team-contributions h4 {
+            font-size: 1rem;
+            margin-bottom: 0.5rem;
+            color: var(--secondary);
+        }
+
+        .team-contributions ul {
+            padding-left: 1.5rem;
+            margin-bottom: 0;
+        }
+
+        .team-contributions li {
+            margin-bottom: 0.25rem;
+            font-size: 0.9rem;
+        }
+
+        .team-social {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .team-social a {
+            color: var(--secondary);
+            font-size: 1.25rem;
+            transition: color 0.3s ease;
+        }
+
+        .team-social a:hover {
+            color: var(--primary);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/placeholder.svg?height=50&width=50" alt="Zero Hunger Logo">
+                    <h1>Zero Hunger Initiative</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="table.html">Programs</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="sitemap.html">Sitemap</a></li>
+                        <li><a href="team.html" class="active">Team</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="team-header">
+            <div class="container">
+                <h1>Meet Our Team</h1>
+                <p>The dedicated individuals behind the Zero Hunger Initiative working to achieve SDG 2.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="team-container">
+                <!-- Team Member 1 -->
+                <div class="team-member">
+                    <img src="d:\College\WEB DEV ASSIGNMENT 2025\TEAM PHOTO\IMG_0779.jpeg" alt="Yusuke" class="team-thumbnail" tabindex="0">
+                    <div class="team-details">
+                        <h3 class="team-name">Yusuke</h3>
+                        <p class="team-role">Content Developer & UX Designer</p>
+                        <p>Passionate about creating engaging user experiences and meaningful content to drive awareness about food security issues.</p>
+                        
+                        <div class="team-contributions">
+                            <h4>Contributions:</h4>
+                            <ul>
+                                <li>Splash Screen</li>
+                                <li>Volunteer Page</li>
+                                <li>Content Page (Food Security)</li>
+                                <li>Page Editor</li>
+                                <li>Validation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="team-social">
+                            <a href="#" aria-label="Email Student 1">✉️</a>
+                            <a href="#" aria-label="Student 1's LinkedIn">👤</a>
+                            <a href="#" aria-label="Student 1's Portfolio">🌐</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 2 -->
+                <div class="team-member">
+                    <img src="d:\College\WEB DEV ASSIGNMENT 2025\TEAM PHOTO\IMG_5481.jpeg" alt="Aarnav" class="team-thumbnail" tabindex="0">
+                    <div class="team-details">
+                        <h3 class="team-name">Arnav</h3>
+                        <p class="team-role">Lead Developer & UI Designer</p>
+                        <p>Focused on creating intuitive interfaces and robust technical solutions to support sustainable agriculture initiatives.</p>
+                        
+                        <div class="team-contributions">
+                            <h4>Contributions:</h4>
+                            <ul>
+                                <li>Website Template & Navigation</li>
+                                <li>Home Page</li>
+                                <li>Programs Table</li>
+                                <li>Content Page (Sustainable Agriculture)</li>
+                                <li>Page Editor</li>
+                                <li>Validation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="team-social">
+                            <a href="#" aria-label="Email Student 2">✉️</a>
+                            <a href="#" aria-label="Student 2's LinkedIn">👤</a>
+                            <a href="#" aria-label="Student 2's Portfolio">🌐</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 3 -->
+                <div class="team-member">
+                    <img src="d:\College\WEB DEV ASSIGNMENT 2025\TEAM PHOTO\IMG_4837.jpeg" alt="Pranav" class="team-thumbnail" tabindex="0">
+                    <div class="team-details">
+                        <h3 class="team-name">Pranav</h3>
+                        <p class="team-role">User Research & Feedback Specialist</p>
+                        <p>Dedicated to understanding user needs and gathering meaningful feedback to improve our initiatives and impact.</p>
+                        
+                        <div class="team-contributions">
+                            <h4>Contributions:</h4>
+                            <ul>
+                                <li>Feedback Form</li>
+                                <li>Team Page</li>
+                                <li>Content Page (Nutrition)</li>
+                                <li>Page Editor</li>
+                                <li>Validation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="team-social">
+                            <a href="#" aria-label="Email Student 3">✉️</a>
+                            <a href="#" aria-label="Student 3's LinkedIn">👤</a>
+                            <a href="#" aria-label="Student 3's Portfolio">🌐</a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Team Member 4 -->
+                <div class="team-member">
+                    <img src="d:\College\WEB DEV ASSIGNMENT 2025\TEAM PHOTO\IMG_0236.jpeg" alt="Ayur" class="team-thumbnail" tabindex="0">
+                    <div class="team-details">
+                        <h3 class="team-name">Ayur</h3>
+                        <p class="team-role">Information Architect & Accessibility Expert</p>
+                        <p>Committed to creating inclusive digital experiences and organizing information for maximum impact and usability.</p>
+                        
+                        <div class="team-contributions">
+                            <h4>Contributions:</h4>
+                            <ul>
+                                <li>User Profile Page</li>
+                                <li>Sitemap</li>
+                                <li>Content Page (Food Waste)</li>
+                                <li>Page Editor</li>
+                                <li>Validation</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="team-social">
+                            <a href="#" aria-label="Email Student 4">✉️</a>
+                            <a href="#" aria-label="Student 4's LinkedIn">👤</a>
+                            <a href="#" aria-label="Student 4's Portfolio">🌐</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Zero Hunger Initiative</h3>
+                    <p>Working together to achieve SDG 2: Zero Hunger by 2030.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="table.html">Programs</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Page Editors</h3>
+                    <ul>
+                        <li><a href="pageEditor_ST1.html">Yusuke</a></li>
+                        <li><a href="pageEditor_ST2.html">Arnav</a></li>
+                        <li><a href="pageEditor_ST3.html">Pranav</a></li>
+                        <li><a href="pageEditor_ST4.html">Ayur</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Zero Hunger Initiative. All rights reserved.</p>
+                <p>This page is maintained by <a href="pageEditor_ST3.html">Student 3</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

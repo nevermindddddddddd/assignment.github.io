@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero Hunger Initiative - Page Editor (Student 3)</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      .editor-container {
+          max-width: 1000px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
+      
+      .editor-header {
+          background-color: var(--primary-light);
+          border-radius: 8px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          text-align: center;
+      }
+      
+      .editor-nav {
+          background-color: white;
+          border-radius: 8px;
+          padding: 1.5rem;
+          margin-bottom: 2rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .editor-nav-title {
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+          color: var(--primary-dark);
+          border-bottom: 2px solid var(--primary-light);
+          padding-bottom: 0.5rem;
+      }
+      
+      .editor-nav-list {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+      }
+      
+      .editor-nav-list li a {
+          display: block;
+          padding: 0.5rem 1rem;
+          background-color: var(--neutral-200);
+          border-radius: 4px;
+          transition: all 0.3s ease;
+      }
+      
+      .editor-nav-list li a:hover {
+          background-color: var(--primary-light);
+          text-decoration: none;
+      }
+      
+      .editor-section {
+          background-color: white;
+          border-radius: 8px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .section-title {
+          color: var(--primary-dark);
+          margin-bottom: 1rem;
+          border-bottom: 2px solid var(--primary-light);
+          padding-bottom: 0.5rem;
+      }
+      
+      .implementation-list {
+          list-style: none;
+          padding: 0;
+          margin-bottom: 1.5rem;
+      }
+      
+      .implementation-list li {
+          margin-bottom: 0.5rem;
+          padding-left: 1.5rem;
+          position: relative;
+      }
+      
+      .implementation-list li::before {
+          content: "✓";
+          position: absolute;
+          left: 0;
+          color: var(--primary);
+      }
+      
+      .code-example {
+          background-color: var(--neutral-800);
+          color: var(--neutral-200);
+          padding: 1.5rem;
+          border-radius: 8px;
+          overflow-x: auto;
+          margin: 1.5rem 0;
+          font-family: monospace;
+      }
+      
+      .reference-list {
+          list-style: none;
+          padding: 0;
+      }
+      
+      .reference-list li {
+          margin-bottom: 1rem;
+          padding-left: 1.5rem;
+          position: relative;
+      }
+      
+      .reference-list li::before {
+          content: "[*]";
+          position: absolute;
+          left: 0;
+          color: var(--primary);
+      }
+      
+      .tag-highlight {
+          color: #e06c75;
+      }
+      
+      .attribute-highlight {
+          color: #d19a66;
+      }
+      
+      .value-highlight {
+          color: #98c379;
+      }
+      
+      .comment-highlight {
+          color: #7f848e;
+      }
+      
+      .go-to-top {
+          position: fixed;
+          bottom: 2rem;
+          right: 2rem;
+          background-color: var(--primary);
+          color: var(--neutral-900);
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.5rem;
+          box-shadow: var(--box-shadow);
+          transition: all 0.3s ease;
+          z-index: 99;
+      }
+      
+      .go-to-top:hover {
+          background-color: var(--primary-dark);
+          color: var(--neutral-100);
+      }
+      
+      .ux-principles {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 1.5rem;
+          margin: 2rem 0;
+      }
+      
+      .principle-card {
+          background-color: var(--neutral-200);
+          border-radius: 8px;
+          padding: 1.5rem;
+          text-align: center;
+          transition: transform 0.3s ease;
+      }
+      
+      .principle-card:hover {
+          transform: translateY(-5px);
+      }
+      
+      .principle-icon {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          color: var(--primary);
+      }
+      
+      .principle-card h3 {
+          margin-bottom: 1rem;
+          color: var(--primary-dark);
+      }
+      
+      .accessibility-checklist {
+          margin: 1.5rem 0;
+      }
+      
+      .checklist-item {
+          display: flex;
+          align-items: flex-start;
+          margin-bottom: 1rem;
+          padding-bottom: 1rem;
+          border-bottom: 1px solid var(--neutral-300);
+      }
+      
+      .checklist-icon {
+          flex: 0 0 30px;
+          font-size: 1.25rem;
+          color: var(--secondary);
+          margin-right: 1rem;
+      }
+      
+      .checklist-content {
+          flex: 1;
+      }
+      
+      .checklist-content h4 {
+          margin-bottom: 0.5rem;
+      }
+  </style>
+</head>
+<body>
+  <header>
+      <div class="container header-content">
+          <div class="logo">
+              <img src="d:\College\WEB DEV ASSIGNMENT 2025\TEAM PHOTO\removed.png" alt="Zero Hunger Initiative Logo">
+              <h1 class="site-title">Zero Hunger Initiative</h1>
+          </div>
+      </div>
+      <nav>
+          <div class="container nav-container">
+              <ul class="nav-list">
+                  <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+                  <li class="nav-item"><a href="volunteer.html" class="nav-link">Volunteer</a></li>
+                  <li class="nav-item"><a href="table.html" class="nav-link">Statistics</a></li>
+                  <li class="nav-item"><a href="profile.html" class="nav-link">User Profile</a></li>
+                  <li class="nav-item"><a href="feedback.html" class="nav-link">Feedback</a></li>
+                  <li class="nav-item"><a href="sitemap.html" class="nav-link">Sitemap</a></li>
+                  <li class="nav-item"><a href="team.html" class="nav-link">Our Team</a></li>
+              </ul>
+          </div>
+      </nav>
+  </header>
+
+  <main>
+      <div class="editor-container">
+          <div class="editor-header" id="top">
+              <h1>Page Editor: Pranav</h1>
+              <p>Documentation of pages implemented and techniques used</p>
+          </div>
+          
+          <div class="editor-nav">
+              <h2 class="editor-nav-title">Page Navigation</h2>
+              <ul class="editor-nav-list">
+                  <li><a href="#overview">Overview</a></li>
+                  <li><a href="#ux-approach">UX Approach</a></li>
+                  <li><a href="#feedback-form">Feedback Form</a></li>
+                  <li><a href="#team-page">Team Page</a></li>
+                  <li><a href="#content-page">Content Page</a></li>
+                  <li><a href="#accessibility">Accessibility Improvements</a></li>
+                  <li><a href="#challenges">Challenges & Lessons</a></li>
+                  <li><a href="#compliance">Compliance</a></li>
+                  <li><a href="#references">References</a></li>
+              </ul>
+          </div>
+          
+          <section id="overview" class="editor-section">
+              <h2 class="section-title">Overview</h2>
+              <p>As Student 3 (UX Specialist) on this project, I was responsible for implementing the following pages and features:</p>
+              <ul class="implementation-list">
+                  <li><a href="feedback.html" target="_blank">Feedback Form</a> (<a href="validation_ST3.html#feedback">Validation</a>)</li>
+                  <li><a href="team.html" target="_blank">Team Page</a> (<a href="validation_ST3.html#team">Validation</a>)</li>
+                  <li><a href="content_ST3.html" target="_blank">Content Page: Nutrition Education</a> (<a href="validation_ST3.html#content">Validation</a>)</li>
+                  <li>Accessibility Improvements Across the Website</li>
+              </ul>
+              <p>My role focused on creating intuitive, user-friendly interfaces and ensuring that all website elements were accessible to users with diverse needs and abilities. I prioritized human-centered design principles throughout the development process.</p>
+          </section>
+          
+          <section id="ux-approach" class="editor-section">
+              <h2 class="section-title">UX Design Approach</h2>
+              <p>I approached the user experience design for this project with a focus on the following key principles:</p>
+              
+              <div class="ux-principles">
+                  <div class="principle-card">
+                      <div class="principle-icon">👤</div>
+                      <h3>User-Centered Design</h3>
+                      <p>Prioritizing user needs and goals throughout the design process, with a focus on creating intuitive and accessible interfaces.</p>
+                  </div>
+                  
+                  <div class="principle-card">
+                      <div class="principle-icon">🔄</div>
+                      <h3>Consistency</h3>
+                      <p>Maintaining consistent patterns, behaviors, and visual elements to reduce cognitive load and improve usability.</p>
+                  </div>
+                  
+                  <div class="principle-card">
+                      <div class="principle-icon">📱</div>
+                      <h3>Responsive Design</h3>
+                      <p>Ensuring all interfaces adapt seamlessly to different screen sizes and devices to provide an optimal experience for all users.</p>
+                  </div>
+                  
+                  <div class="principle-card">
+                      <div class="principle-icon">♿</div>
+                      <h3>Accessibility</h3>
+                      <p>Designing for users with diverse abilities and needs, following WCAG guidelines to ensure equal access to information.</p>
+                  </div>
+              </div>
+              
+              <h3>Design Process</h3>
+              <p>For each page I implemented, I followed a structured design process:</p>
+              <ol>
+                  <li><strong>Research:</strong> Understanding user needs and goals related to the specific page functionality</li>
+                  <li><strong>Information Architecture:</strong> Organizing content in a logical, intuitive structure</li>
+                  <li><strong>Wireframing:</strong> Creating low-fidelity layouts to establish content hierarchy and user flow</li>
+                  <li><strong>Visual Design:</strong> Applying the established design system while ensuring optimal usability</li>
+                  <li><strong>Implementation:</strong> Coding the design with a focus on accessibility and responsiveness</li>
+                  <li><strong>Testing:</strong> Validating the implementation for usability and accessibility</li>
+              </ol>
+          </section>
+          
+          <section id="feedback-form" class="editor-section">
+              <h2 class="section-title">Feedback Form Implementation</h2>
+              <h3>Purpose & Requirements</h3>
+              <p>The feedback form was designed to collect user input about the Zero Hunger Initiative's programs and website. It needed to be comprehensive yet user-friendly, with appropriate form validation and clear instructions.</p>
+              
+              <h3>UX Considerations</h3>
+              <p>Key UX principles applied to the feedback form:</p>
+              <ul>
+                  <li><strong>Clear Instructions:</strong> Provided context and guidance at the beginning of the form</li>
+                  <li><strong>Logical Grouping:</strong> Organized form fields into related sections using fieldsets and legends</li>
+                  <li><strong>Visual Hierarchy:</strong> Used typography and spacing to establish clear relationships between elements</li>
+                  <li><strong>Input Assistance:</strong> Added labels, placeholders, and help text to guide users</li>
+                  <li><strong>Error Prevention:</strong> Implemented client-side validation with clear error messages</li>
+                  <li><strong>Responsive Design:</strong> Ensured the form works well on all device sizes</li>
+              </ul>
+              
+              <h3>Technical Implementation</h3>
+              <p>Key HTML elements and techniques used:</p>
+              <ul>
+                  <li><strong>Semantic Form Elements:</strong> Used appropriate form controls with proper attributes</li>
+                  <li><strong>Fieldsets:</strong> Grouped related form elements for better organization</li>
+                  <li><strong>Input Types:</strong> Utilized various HTML5 input types (email, date, time, etc.) for better user experience</li>
+                  <li><strong>Form Validation:</strong> Implemented HTML5 validation attributes and custom JavaScript validation</li>
+                  <li><strong>Character Counter:</strong> Added a dynamic character counter for the feedback message</li>
+              </ul>
+              
+              <h4>Form Structure Implementation</h4>
+              <div class="code-example">
+                  <pre><span class="tag-highlight">&lt;form</span> <span class="attribute-highlight">id</span>=<span class="value-highlight">"feedbackForm"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;fieldset&gt;</span>
+      <span class="tag-highlight">&lt;legend&gt;</span>Personal Information<span class="tag-highlight">&lt;/legend&gt;</span>
+      <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"form-row"</span><span class="tag-highlight">&gt;</span>
+          <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"form-col"</span><span class="tag-highlight">&gt;</span>
+              <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"form-group"</span><span class="tag-highlight">&gt;</span>
+                  <span class="tag-highlight">&lt;label</span> <span class="attribute-highlight">for</span>=<span class="value-highlight">"fullName"</span><span class="tag-highlight">&gt;</span>Full Name<span class="tag-highlight">&lt;span</span> <span class="attribute-highlight">aria-label</span>=<span class="value-highlight">"required"</span><span class="tag-highlight">&gt;</span>*<span class="tag-highlight">&lt;/span&gt;&lt;/label&gt;</span>
+                  <span class="tag-highlight">&lt;input</span> <span class="attribute-highlight">type</span>=<span class="value-highlight">"text"</span> <span class="attribute-highlight">id</span>=<span class="value-highlight">"fullName"</span> <span class="attribute-highlight">name</span>=<span class="value-highlight">"fullName"</span> <span class="attribute-highlight">required</span> <span class="attribute-highlight">title</span>=<span class="value-highlight">"Please enter your full name"</span><span class="tag-highlight">&gt;</span>
+                  <span class="tag-highlight">&lt;span</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"error-message"</span><span class="tag-highlight">&gt;</span>Please enter your full name<span class="tag-highlight">&lt;/span&gt;</span>
+              <span class="tag-highlight">&lt;/div&gt;</span>
+          <span class="tag-highlight">&lt;/div&gt;</span>
+          <span class="comment-highlight">&lt;!-- Additional form fields --&gt;</span>
+      <span class="tag-highlight">&lt;/div&gt;</span>
+  <span class="tag-highlight">&lt;/fieldset&gt;</span>
+  
+  <span class="comment-highlight">&lt;!-- Additional fieldsets for different sections --&gt;</span>
+  
+  <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"form-actions"</span><span class="tag-highlight">&gt;</span>
+      <span class="tag-highlight">&lt;button</span> <span class="attribute-highlight">type</span>=<span class="value-highlight">"reset"</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"btn btn-neutral"</span><span class="tag-highlight">&gt;</span>Clear Form<span class="tag-highlight">&lt;/button&gt;</span>
+      <span class="tag-highlight">&lt;button</span> <span class="attribute-highlight">type</span>=<span class="value-highlight">"submit"</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"btn btn-primary"</span><span class="tag-highlight">&gt;</span>Submit Feedback<span class="tag-highlight">&lt;/button&gt;</span>
+  <span class="tag-highlight">&lt;/div&gt;</span>
+<span class="tag-highlight">&lt;/form&gt;</span></pre>
+              </div>
+              
+              <h4>JavaScript for Character Counter</h4>
+              <div class="code-example">
+                  <pre>// Character counter for feedback message
+const feedbackMessage = document.getElementById('feedbackMessage');
+const charCount = document.getElementById('charCount');
+
+feedbackMessage.addEventListener('input', function() {
+    charCount.textContent = this.value.length;
+});</pre>
+              </div>
+          </section>
+          
+          <section id="team-page" class="editor-section">
+              <h2 class="section-title">Team Page Implementation</h2>
+              <h3>Purpose & Requirements</h3>
+              <p>The team page was designed to introduce the members of the Zero Hunger Initiative team, highlighting their roles, expertise, and contributions. The page needed to be visually engaging while providing relevant information about each team member.</p>
+              
+              <h3>UX Considerations</h3>
+              <p>Key UX principles applied to the team page:</p>
+              <ul>
+                  <li><strong>Visual Hierarchy:</strong> Created clear visual distinction between different team members</li>
+                  <li><strong>Progressive Disclosure:</strong> Implemented hover/focus states to reveal additional information</li>
+                  <li><strong>Consistent Layout:</strong> Used a grid-based layout for team member cards</li>
+                  <li><strong>Responsive Design:</strong> Ensured the grid adapts to different screen sizes</li>
+                  <li><strong>Keyboard Accessibility:</strong> Made interactive elements accessible via keyboard</li>
+              </ul>
+              
+              <h3>Technical Implementation</h3>
+              <p>Key HTML elements and techniques used:</p>
+              <ul>
+                  <li><strong>CSS Grid:</strong> Implemented a responsive grid layout for team member cards</li>
+                  <li><strong>Interactive Cards:</strong> Created cards with hover/focus effects to reveal additional information</li>
+                  <li><strong>Semantic HTML:</strong> Used appropriate heading levels and semantic elements</li>
+                  <li><strong>Keyboard Support:</strong> Added JavaScript to support keyboard interaction with interactive elements</li>
+              </ul>
+              
+              <h4>Team Member Card Implementation</h4>
+              <div class="code-example">
+                  <pre><span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"team-member"</span> <span class="attribute-highlight">tabindex</span>=<span class="value-highlight">"0"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"member-photo"</span><span class="tag-highlight">&gt;</span>
+      <span class="tag-highlight">&lt;img</span> <span class="attribute-highlight">src</span>=<span class="value-highlight">"/placeholder.svg?height=300&width=250"</span> <span class="attribute-highlight">alt</span>=<span class="value-highlight">"Team member's photo"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;/div&gt;</span>
+  <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"member-info"</span><span class="tag-highlight">&gt;</span>
+      <span class="tag-highlight">&lt;h3</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"member-name"</span><span class="tag-highlight">&gt;</span>Team Member Name<span class="tag-highlight">&lt;/h3&gt;</span>
+      <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"member-role"</span><span class="tag-highlight">&gt;</span>Role Title<span class="tag-highlight">&lt;/div&gt;</span>
+  <span class="tag-highlight">&lt;/div&gt;</span>
+  <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"member-expanded"</span><span class="tag-highlight">&gt;</span>
+      <span class="tag-highlight">&lt;h4</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"expanded-title"</span><span class="tag-highlight">&gt;</span>Team Member Name<span class="tag-highlight">&lt;/h4&gt;</span>
+      <span class="tag-highlight">&lt;p&gt;</span>Brief description of the team member's background and expertise.<span class="tag-highlight">&lt;/p&gt;</span>
+      <span class="tag-highlight">&lt;h5&gt;</span>Contributions:<span class="tag-highlight">&lt;/h5&gt;</span>
+      <span class="tag-highlight">&lt;ul</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"contribution-list"</span><span class="tag-highlight">&gt;</span>
+          <span class="tag-highlight">&lt;li&gt;</span>Contribution 1<span class="tag-highlight">&lt;/li&gt;</span>
+          <span class="tag-highlight">&lt;li&gt;</span>Contribution 2<span class="tag-highlight">&lt;/li&gt;</span>
+          <span class="tag-highlight">&lt;li&gt;</span>Contribution 3<span class="tag-highlight">&lt;/li&gt;</span>
+      <span class="tag-highlight">&lt;/ul&gt;</span>
+      <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"social-links"</span><span class="tag-highlight">&gt;</span>
+          <span class="tag-highlight">&lt;a</span> <span class="attribute-highlight">href</span>=<span class="value-highlight">"#"</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"social-icon"</span> <span class="attribute-highlight">aria-label</span>=<span class="value-highlight">"GitHub"</span><span class="tag-highlight">&gt;</span>★<span class="tag-highlight">&lt;/a&gt;</span>
+          <span class="tag-highlight">&lt;a</span> <span class="attribute-highlight">href</span>=<span class="value-highlight">"#"</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"social-icon"</span> <span class="attribute-highlight">aria-label</span>=<span class="value-highlight">"LinkedIn"</span><span class="tag-highlight">&gt;</span>☰<span class="tag-highlight">&lt;/a&gt;</span>
+          <span class="tag-highlight">&lt;a</span> <span class="attribute-highlight">href</span>=<span class="value-highlight">"#"</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"social-icon"</span> <span class="attribute-highlight">aria-label</span>=<span class="value-highlight">"Twitter"</span><span class="tag-highlight">&gt;</span>✉<span class="tag-highlight">&lt;/a&gt;</span>
+      <span class="tag-highlight">&lt;/div&gt;</span>
+  <span class="tag-highlight">&lt;/div&gt;</span>
+<span class="tag-highlight">&lt;/div&gt;</span></pre>
+              </div>
+              
+              <h4>CSS for Interactive Card Effects</h4>
+              <div class="code-example">
+                  <pre>.member-expanded {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  color: white;
+  padding: 2rem;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  pointer-events: none;
+  border-radius: 8px;
+}
+
+.team-member:hover .member-expanded,
+.team-member:focus .member-expanded {
+  opacity: 1;
+  transform: translateY(0);
+}</pre>
+              </div>
+          </section>
+          
+          <section id="content-page" class="editor-section">
+              <h2 class="section-title">Content Page: Nutrition Education</h2>
+              <h3>Purpose & Requirements</h3>
+              <p>The Nutrition Education content page provides information about the importance of nutrition education in addressing hunger and food insecurity. The page needed to present educational content in an engaging, accessible format with clear organization and visual aids.</p>
+              
+              <h3>UX Considerations</h3>
+              <p>Key UX principles applied to the content page:</p>
+              <ul>
+                  <li><strong>Content Chunking:</strong> Broke down complex information into digestible sections</li>
+                  <li><strong>Visual Aids:</strong> Used icons and images to reinforce key concepts</li>
+                  <li><strong>Scannable Layout:</strong> Created clear headings, lists, and short paragraphs for easy scanning</li>
+                  <li><strong>Interactive Elements:</strong> Added interactive components to engage users with the content</li>
+                  <li><strong>Navigation Aids:</strong> Implemented internal page navigation for easy access to specific sections</li>
+              </ul>
+              
+              <h3>Technical Implementation</h3>
+              <p>Key HTML elements and techniques used:</p>
+              <ul>
+                  <li><strong>Semantic Structure:</strong> Used appropriate heading levels and semantic elements</li>
+                  <li><strong>Card Components:</strong> Created visually distinct cards for different nutrition topics</li>
+                  <li><strong>CSS Grid:</strong> Implemented responsive grid layouts for food groups and meal planning sections</li>
+                  <li><strong>Internal Navigation:</strong> Added anchor links to specific sections</li>
+              </ul>
+              
+              <h4>Food Group Section Implementation</h4>
+              <div class="code-example">
+                  <pre><span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"food-group-container"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"food-group"</span><span class="tag-highlight">&gt;</span>
+      <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"food-group-icon"</span><span class="tag-highlight">&gt;</span>🌾<span class="tag-highlight">&lt;/div&gt;</span>
+      <span class="tag-highlight">&lt;h3&gt;</span>Grains<span class="tag-highlight">&lt;/h3&gt;</span>
+      <span class="tag-highlight">&lt;p&gt;</span>Provide energy through carbohydrates and contain important B vitamins, minerals, and fiber.<span class="tag-highlight">&lt;/p&gt;</span>
+      <span class="tag-highlight">&lt;p&gt;&lt;strong&gt;</span>Examples:<span class="tag-highlight">&lt;/strong&gt;</span> Rice, wheat, corn, oats, barley, millet<span class="tag-highlight">&lt;/p&gt;</span>
+  <span class="tag-highlight">&lt;/div&gt;</span>
+  
+  <span class="comment-highlight">&lt;!-- Additional food groups --&gt;</span>
+<span class="tag-highlight">&lt;/div&gt;</span></pre>
+              </div>
+          </section>
+          
+          <section id="accessibility" class="editor-section">
+              <h2 class="section-title">Accessibility Improvements</h2>
+              <p>As the UX Specialist, I conducted a comprehensive accessibility audit of the website and implemented various improvements to ensure the site is usable by people with diverse abilities and needs.</p>
+              
+              <h3>Accessibility Checklist</h3>
+              <div class="accessibility-checklist">
+                  <div class="checklist-item">
+                      <div class="checklist-icon">✓</div>
+                      <div class="checklist-content">
+                          <h4>Semantic HTML</h4>
+                          <p>Ensured proper use of semantic HTML elements throughout the website, including headings, landmarks, lists, and form elements.</p>
+                      </div>
+                  </div>
+                  
+                  <div class="checklist-item">
+                      <div class="checklist-icon">✓</div>
+                      <div class="checklist-content">
+                          <h4>Keyboard Navigation</h4>
+                          <p>Verified that all interactive elements are accessible via keyboard, with visible focus indicators and logical tab order.</p>
+                      </div>
+                  </div>
+                  
+                  <div class="checklist-item">
+                      <div class="checklist-icon">✓</div>
+                      <div class="checklist-content">
+                          <h4>Color Contrast</h4>
+                          <p>Ensured sufficient contrast between text and background colors, meeting WCAG AA standards (4.5:1 for normal text, 3:1 for large text).</p>
+                      </div>
+                  </div>
+                  
+                  <div class="checklist-item">
+                      <div class="checklist-icon">✓</div>
+                      <div class="checklist-content">
+                          <h4>Alternative Text</h4>
+                          <p>Added descriptive alt text for all images, and appropriate ARIA labels for interactive elements.</p>
+                      </div>
+                  </div>
+                  
+                  <div class="checklist-item">
+                      <div class="checklist-icon">✓</div>
+                      <div class="checklist-content">
+                          <h4>Form Accessibility</h4>
+                          <p>Implemented proper form labeling, error handling, and instructions to ensure forms are accessible to screen reader users.</p>
+                      </div>
+                  </div>
+                  
+                  <div class="checklist-item">
+                      <div class="checklist-icon">✓</div>
+                      <div class="checklist-content">
+                          <h4>Responsive Design</h4>
+                          <p>Ensured the website is usable at various screen sizes and zoom levels, with text that remains readable when zoomed.</p>
+                      </div>
+                  </div>
+              </div>
+              
+              <h3>Specific Improvements</h3>
+              <p>Key accessibility improvements implemented across the website:</p>
+              <ul>
+                  <li><strong>Skip Navigation Link:</strong> Added a visually hidden skip link that becomes visible on focus, allowing keyboard users to bypass navigation</li>
+                  <li><strong>ARIA Attributes:</strong> Added appropriate ARIA roles, states, and properties to enhance screen reader compatibility</li>
+                  <li><strong>Focus Management:</strong> Implemented proper focus management for interactive components</li>
+                  <li><strong>Form Error Handling:</strong> Created accessible error messages for form validation</li>
+                  <li><strong>Keyboard Support for Interactive Elements:</strong> Added JavaScript to ensure custom interactive elements work with keyboard navigation</li>
+              </ul>
+              
+              <h4>Skip Navigation Implementation</h4>
+              <div class="code-example">
+                  <pre><span class="tag-highlight">&lt;a</span> <span class="attribute-highlight">href</span>=<span class="value-highlight">"#main-content"</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"skip-link"</span><span class="tag-highlight">&gt;</span>Skip to main content<span class="tag-highlight">&lt;/a&gt;</span>
+
+<span class="comment-highlight">/* CSS */</span>
+.skip-link {
+  position: absolute;
+  top: -40px;
+  left: 0;
+  background: var(--primary);
+  color: white;
+  padding: 8px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  top: 0;
+}</pre>
+              </div>
+              
+              <h4>Keyboard Support for Team Member Cards</h4>
+              <div class="code-example">
+                  <pre>// Add keyboard navigation support for team member cards
+const teamMembers = document.querySelectorAll('.team-member');
+
+teamMembers.forEach(member => {
+    member.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            // Toggle expanded state for keyboard users
+            this.classList.toggle('keyboard-expanded');
+        }
+    });
+});</pre>
+              </div>
+          </section>
+          
+          <section id="challenges" class="editor-section">
+              <h2 class="section-title">Challenges & Lessons Learned</h2>
+              <h3>Challenges Faced</h3>
+              <ol>
+                  <li><strong>Form Validation Accessibility:</strong> Creating form validation that was both user-friendly and accessible to screen reader users required careful consideration.</li>
+                  <li><strong>Interactive Elements:</strong> Ensuring custom interactive elements (like the team member cards) were fully accessible via keyboard and screen readers was challenging.</li>
+                  <li><strong>Content Organization:</strong> Structuring complex nutritional information in a way that was both comprehensive and digestible required multiple iterations.</li>
+              </ol>
+              
+              <h3>Solutions & Lessons</h3>
+              <ol>
+                  <li>Implemented both visual and programmatic error messages for form validation, with clear instructions on how to correct errors.</li>
+                  <li>Used a combination of ARIA attributes, keyboard event listeners, and focus management to make interactive elements accessible.</li>
+                  <li>Applied content chunking principles and visual hierarchy to break down complex information into manageable sections.</li>
+              </ol>
+              
+              <p>These challenges reinforced the importance of considering accessibility from the beginning of the design process, rather than as an afterthought. I also learned the value of testing with actual assistive technologies rather than relying solely on automated testing tools.</p>
+          </section>
+          
+          <section id="compliance" class="editor-section">
+              <h2 class="section-title">Compliance</h2>
+              <p>The pages I implemented comply with Janet regulations governing web page publication in the following ways:</p>
+              <ul>
+                  <li><strong>Valid HTML5:</strong> All pages have been validated using the W3C Markup Validation Service</li>
+                  <li><strong>Accessibility:</strong> Pages meet WCAG 2.1 Level AA standards for accessibility</li>
+                  <li><strong>Responsive Design:</strong> All pages function properly across different devices and screen sizes</li>
+                  <li><strong>Cross-Browser Compatibility:</strong> Tested and functional across major browsers</li>
+                  <li><strong>Performance:</strong> Optimized for reasonable load times and performance</li>
+                  <li><strong>Security:</strong> Implemented secure form handling practices</li>
+              </ul>
+              <p>These measures ensure that the pages meet the technical and ethical standards required for academic web publishing.</p>
+          </section>
+          
+          <section id="references" class="editor-section">
+              <h2 class="section-title">References</h2>
+              <ul class="reference-list">
+                  <li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility Guidelines (WCAG) 2.1</a> - Used for ensuring accessibility standards compliance</li>
+                  <li><a href="https://www.w3.org/WAI/tutorials/">WAI Web Accessibility Tutorials</a> - Reference for implementing accessible web components</li>
+                  <li><a href="https://www.nngroup.com/articles/ten-usability-heuristics/">Nielsen Norman Group: 10 Usability Heuristics</a> - Applied these principles to UX design</li>
+                  <li><a href="https://www.fao.org/nutrition/en/">FAO: Nutrition</a> - Source for nutrition education content</li>
+                  <li><a href="https://developer.mozilla.org/en-US/docs/Learn/Accessibility">MDN Web Docs: Accessibility</a> - Reference for accessibility implementation best practices</li>
+                  <li>University of Westminster Module Materials - Web Design and Development lecture notes and tutorials</li>
+              </ul>
+          </section>
+          
+          <a href="#top" class="go-to-top" aria-label="Go to top of page">↑</a>
+      </div>
+  </main>
+
+  <footer>
+      <div class="container footer-content">
+          <div class="footer-section">
+              <h4>About Us</h4>
+              <p>We are dedicated to supporting UN SDG #2: Zero Hunger through education, advocacy, and action.</p>
+          </div>
+          <div class="footer-section">
+              <h4>Quick Links</h4>
+              <a href="home.html" class="footer-link">Home</a><br>
+              <a href="volunteer.html" class="footer-link">Volunteer</a><br>
+              <a href="feedback.html" class="footer-link">Feedback</a><br>
+              <a href="sitemap.html" class="footer-link">Sitemap</a><br>
+          </div>
+          <div class="footer-section">
+              <h4>Page Editors</h4>
+              <a href="pageEditor_ST1.html" class="footer-link">Yusuke's Page</a><br>
+              <a href="pageEditor_ST2.html" class="footer-link">Arnav's Page</a><br>
+              <a href="pageEditor_ST3.html" class="footer-link">Pranav's Page</a><br>
+              <a href="pageEditor_ST4.html" class="footer-link">Ayur's Page</a><br>
+          </div>
+      </div>
+      <div class="copyright">
+          <p>&copy; 2025 Zero Hunger Initiative. All rights reserved.</p>
+          <p>This website meets accessibility standards. <a href="validation_ST3.html">Validation</a></p>
+      </div>
+  </footer>
+</body>
+</html>

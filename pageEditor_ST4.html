@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero Hunger Initiative - Page Editor (Student 4)</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      .editor-container {
+          max-width: 1000px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
+      
+      .editor-header {
+          background-color: var(--primary-light);
+          border-radius: 8px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          text-align: center;
+      }
+      
+      .editor-nav {
+          background-color: white;
+          border-radius: 8px;
+          padding: 1.5rem;
+          margin-bottom: 2rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .editor-nav-title {
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+          color: var(--primary-dark);
+          border-bottom: 2px solid var(--primary-light);
+          padding-bottom: 0.5rem;
+      }
+      
+      .editor-nav-list {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+      }
+      
+      .editor-nav-list li a {
+          display: block;
+          padding: 0.5rem 1rem;
+          background-color: var(--neutral-200);
+          border-radius: 4px;
+          transition: all 0.3s ease;
+      }
+      
+      .editor-nav-list li a:hover {
+          background-color: var(--primary-light);
+          text-decoration: none;
+      }
+      
+      .editor-section {
+          background-color: white;
+          border-radius: 8px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .section-title {
+          color: var(--primary-dark);
+          margin-bottom: 1rem;
+          border-bottom: 2px solid var(--primary-light);
+          padding-bottom: 0.5rem;
+      }
+      
+      .implementation-list {
+          list-style: none;
+          padding: 0;
+          margin-bottom: 1.5rem;
+      }
+      
+      .implementation-list li {
+          margin-bottom: 0.5rem;
+          padding-left: 1.5rem;
+          position: relative;
+      }
+      
+      .implementation-list li::before {
+          content: "✓";
+          position: absolute;
+          left: 0;
+          color: var(--primary);
+      }
+      
+      .code-example {
+          background-color: var(--neutral-800);
+          color: var(--neutral-200);
+          padding: 1.5rem;
+          border-radius: 8px;
+          overflow-x: auto;
+          margin: 1.5rem 0;
+          font-family: monospace;
+      }
+      
+      .reference-list {
+          list-style: none;
+          padding: 0;
+      }
+      
+      .reference-list li {
+          margin-bottom: 1rem;
+          padding-left: 1.5rem;
+          position: relative;
+      }
+      
+      .reference-list li::before {
+          content: "[*]";
+          position: absolute;
+          left: 0;
+          color: var(--primary);
+      }
+      
+      .tag-highlight {
+          color: #e06c75;
+      }
+      
+      .attribute-highlight {
+          color: #d19a66;
+      }
+      
+      .value-highlight {
+          color: #98c379;
+      }
+      
+      .comment-highlight {
+          color: #7f848e;
+      }
+      
+      .go-to-top {
+          position: fixed;
+          bottom: 2rem;
+          right: 2rem;
+          background-color: var(--primary);
+          color: var(--neutral-900);
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.5rem;
+          box-shadow: var(--box-shadow);
+          transition: all 0.3s ease;
+          z-index: 99;
+      }
+      
+      .go-to-top:hover {
+          background-color: var(--primary-dark);
+          color: var(--neutral-100);
+      }
+      
+      .svg-example {
+          width: 100%;
+          height: 300px;
+          background-color: var(--neutral-200);
+          border-radius: 8px;
+          margin: 1.5rem 0;
+          padding: 1rem;
+      }
+      
+      .svg-code {
+          margin-top: 1rem;
+      }
+      
+      .ia-principles {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 1.5rem;
+          margin: 2rem 0;
+      }
+      
+      .ia-principle {
+          background-color: var(--neutral-200);
+          border-radius: 8px;
+          padding: 1.5rem;
+          text-align: center;
+          transition: transform 0.3s ease;
+      }
+      
+      .ia-principle:hover {
+          transform: translateY(-5px);
+      }
+      
+      .ia-icon {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+          color: var(--primary);
+      }
+      
+      .ia-principle h3 {
+          margin-bottom: 1rem;
+          color: var(--primary-dark);
+      }
+      
+      .sitemap-structure {
+          width: 100%;
+          max-width: 800px;
+          margin: 2rem auto;
+          background-color: var(--neutral-200);
+          border-radius: 8px;
+          padding: 1.5rem;
+      }
+  </style>
+</head>
+<body>
+  <header>
+      <div class="container header-content">
+          <div class="logo">
+              <img src="d:\College\WEB DEV ASSIGNMENT 2025\TEAM PHOTO\removed.png" alt="Zero Hunger Initiative Logo">
+              <h1 class="site-title">Zero Hunger Initiative</h1>
+          </div>
+      </div>
+      <nav>
+          <div class="container nav-container">
+              <ul class="nav-list">
+                  <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+                  <li class="nav-item"><a href="volunteer.html" class="nav-link">Volunteer</a></li>
+                  <li class="nav-item"><a href="table.html" class="nav-link">Statistics</a></li>
+                  <li class="nav-item"><a href="profile.html" class="nav-link">User Profile</a></li>
+                  <li class="nav-item"><a href="feedback.html" class="nav-link">Feedback</a></li>
+                  <li class="nav-item"><a href="sitemap.html" class="nav-link">Sitemap</a></li>
+                  <li class="nav-item"><a href="team.html" class="nav-link">Our Team</a></li>
+              </ul>
+          </div>
+      </nav>
+  </header>
+
+  <main>
+      <div class="editor-container">
+          <div class="editor-header" id="top">
+              <h1>Page Editor: Ayur</h1>
+              <p>Documentation of pages implemented and techniques used</p>
+          </div>
+          
+          <div class="editor-nav">
+              <h2 class="editor-nav-title">Page Navigation</h2>
+              <ul class="editor-nav-list">
+                  <li><a href="#overview">Overview</a></li>
+                  <li><a href="#ia-approach">Information Architecture Approach</a></li>
+                  <li><a href="#user-profile">User Profile Page</a></li>
+                  <li><a href="#sitemap">Sitemap Development</a></li>
+                  <li><a href="#content-page">Content Page</a></li>
+                  <li><a href="#svg-elements">SVG Interactive Elements</a></li>
+                  <li><a href="#challenges">Challenges & Lessons</a></li>
+                  <li><a href="#accessibility">Accessibility</a></li>
+                  <li><a href="#compliance">Compliance</a></li>
+                  <li><a href="#references">References</a></li>
+              </ul>
+          </div>
+          
+          <section id="overview" class="editor-section">
+              <h2 class="section-title">Overview</h2>
+              <p>As Student 4 (Information Architect) on this project, I was responsible for implementing the following pages and features:</p>
+              <ul class="implementation-list">
+                  <li><a href="profile.html" target="_blank">User Profile Page</a> (<a href="validation_ST4.html#profile">Validation</a>)</li>
+                  <li><a href="sitemap.html" target="_blank">Sitemap Development</a> (<a href="validation_ST4.html#sitemap">Validation</a>)</li>
+                  <li><a href="content_ST4.html" target="_blank">Content Page: Global Partnerships</a> (<a href="validation_ST4.html#content">Validation</a>)</li>
+                  <li>SVG Interactive Elements Across the Website</li>
+              </ul>
+              <p>My role focused on organizing information in a logical, intuitive manner and creating interactive visualizations to enhance user understanding. I prioritized clear information hierarchies, intuitive navigation, and engaging interactive elements throughout the development process.</p>
+          </section>
+          
+          <section id="ia-approach" class="editor-section">
+              <h2 class="section-title">Information Architecture Approach</h2>
+              <p>I approached the information architecture for this project with a focus on the following key principles:</p>
+              
+              <div class="ia-principles">
+                  <div class="ia-principle">
+                      <div class="ia-icon">🧩</div>
+                      <h3>Organization</h3>
+                      <p>Structuring content into logical categories and hierarchies that reflect user mental models and task flows.</p>
+                  </div>
+                  
+                  <div class="ia-principle">
+                      <div class="ia-icon">🏷️</div>
+                      <h3>Labeling</h3>
+                      <p>Using clear, consistent terminology that accurately represents content and is meaningful to users.</p>
+                  </div>
+                  
+                  <div class="ia-principle">
+                      <div class="ia-icon">🧭</div>
+                      <h3>Navigation</h3>
+                      <p>Creating intuitive pathways that help users move through content efficiently and understand their current location.</p>
+                  </div>
+                  
+                  <div class="ia-principle">
+                      <div class="ia-icon">🔍</div>
+                      <h3>Findability</h3>
+                      <p>Ensuring content can be discovered through multiple pathways, including navigation, search, and cross-linking.</p>
+                  </div>
+              </div>
+              
+              <h3>Site Structure Development</h3>
+              <p>Before implementation, I developed a comprehensive site structure that organized content based on:</p>
+              <ul>
+                  <li><strong>User Goals:</strong> Prioritizing content and features that support key user objectives</li>
+                  <li><strong>Content Relationships:</strong> Identifying logical connections between different content areas</li>
+                  <li><strong>Information Hierarchy:</strong> Establishing primary, secondary, and tertiary levels of information</li>
+                  <li><strong>Navigation Patterns:</strong> Implementing consistent, predictable navigation systems</li>
+              </ul>
+              
+              <div class="sitemap-structure">
+                  <h3>Site Structure Overview</h3>
+                  <ul>
+                      <li><strong>Entry Point:</strong> Splash Screen → Home Page</li>
+                      <li>
+                          <strong>Main Content Areas:</strong>
+                          <ul>
+                              <li>Volunteer Opportunities</li>
+                              <li>Statistics & Data</li>
+                              <li>User Profile</li>
+                              <li>Feedback</li>
+                          </ul>
+                      </li>
+                      <li>
+                          <strong>Supporting Content:</strong>
+                          <ul>
+                              <li>Sitemap</li>
+                              <li>Team Information</li>
+                          </ul>
+                      </li>
+                      <li>
+                          <strong>Educational Resources:</strong>
+                          <ul>
+                              <li>Food Security Programs</li>
+                              <li>Sustainable Agriculture</li>
+                              <li>Nutrition Education</li>
+                              <li>Global Partnerships</li>
+                          </ul>
+                      </li>
+                      <li>
+                          <strong>Documentation:</strong>
+                          <ul>
+                              <li>Page Editor Documentation (for each team member)</li>
+                              <li>Validation Pages</li>
+                          </ul>
+                      </li>
+                  </ul>
+              </div>
+          </section>
+          
+          <section id="user-profile" class="editor-section">
+              <h2 class="section-title">User Profile Page Implementation</h2>
+              <h3>Purpose & Requirements</h3>
+              <p>The User Profile page was designed to showcase a volunteer's information, skills, interests, and availability. It needed to present a comprehensive view of the user while maintaining a clean, organized layout.</p>
+              
+              <h3>Information Architecture Considerations</h3>
+              <p>Key IA principles applied to the User Profile page:</p>
+              <ul>
+                  <li><strong>Content Grouping:</strong> Organized user information into logical sections (skills, goals, interests, etc.)</li>
+                  <li><strong>Progressive Disclosure:</strong> Presented the most important information first, with additional details available as needed</li>
+                  <li><strong>Visual Hierarchy:</strong> Used design elements to establish clear relationships between different types of information</li>
+                  <li><strong>Consistent Patterns:</strong> Applied consistent formatting and interaction patterns across different sections</li>
+              </ul>
+              
+              <h3>Technical Implementation</h3>
+              <p>Key HTML elements and techniques used:</p>
+              <ul>
+                  <li><strong>CSS Grid:</strong> Implemented a responsive grid layout for profile sections</li>
+                  <li><strong>Card Components:</strong> Created visually distinct cards for different types of user information</li>
+                  <li><strong>Skill Visualization:</strong> Implemented progress bars to visually represent skill levels</li>
+                  <li><strong>Calendar Display:</strong> Created a simple availability calendar using HTML tables</li>
+                  <li><strong>Contact Form:</strong> Added a contact form with appropriate form controls and validation</li>
+              </ul>
+              
+              <h4>Profile Grid Implementation</h4>
+              <div class="code-example">
+                  <pre><span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"profile-grid"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"profile-section"</span><span class="tag-highlight">&gt;</span>
+      <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"section-title"</span><span class="tag-highlight">&gt;</span>
+          <span class="tag-highlight">&lt;i&gt;</span>★<span class="tag-highlight">&lt;/i&gt;</span>
+          <span class="tag-highlight">&lt;h3&gt;</span>Skills & Expertise<span class="tag-highlight">&lt;/h3&gt;</span>
+      <span class="tag-highlight">&lt;/div&gt;</span>
+      <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"skill-bar"</span><span class="tag-highlight">&gt;</span>
+          <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"skill-info"</span><span class="tag-highlight">&gt;</span>
+              <span class="tag-highlight">&lt;span&gt;</span>Community Organizing<span class="tag-highlight">&lt;/span&gt;</span>
+              <span class="tag-highlight">&lt;span&gt;</span>95%<span class="tag-highlight">&lt;/span&gt;</span>
+          <span class="tag-highlight">&lt;/div&gt;</span>
+          <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"skill-progress"</span><span class="tag-highlight">&gt;</span>
+              <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"skill-fill"</span> <span class="attribute-highlight">style</span>=<span class="value-highlight">"width: 95%;"</span><span class="tag-highlight">&gt;</span><span class="tag-highlight">&lt;/div&gt;</span>
+          <span class="tag-highlight">&lt;/div&gt;</span>
+      <span class="tag-highlight">&lt;/div&gt;</span>
+      <span class="comment-highlight">&lt;!-- Additional skill bars --&gt;</span>
+  <span class="tag-highlight">&lt;/div&gt;</span>
+  <span class="comment-highlight">&lt;!-- Additional profile sections --&gt;</span>
+<span class="tag-highlight">&lt;/div&gt;</span></pre>
+              </div>
+          </section>
+          
+          <section id="sitemap" class="editor-section">
+              <h2 class="section-title">Sitemap Development</h2>
+              <h3>Purpose & Requirements</h3>
+              <p>The Sitemap page was designed to provide users with a visual representation of the website's structure, helping them understand the organization of content and navigate efficiently. It needed to be both visually appealing and functionally useful.</p>
+              
+              <h3>Information Architecture Considerations</h3>
+              <p>Key IA principles applied to the Sitemap:</p>
+              <ul>
+                  <li><strong>Visual Hierarchy:</strong> Represented the site's hierarchical structure visually</li>
+                  <li><strong>Comprehensive Coverage:</strong> Included all key pages and content areas</li>
+                  <li><strong>Multiple Representations:</strong> Provided both visual (SVG) and text-based representations</li>
+                  <li><strong>Accessibility:</strong> Ensured the sitemap was accessible to users with diverse needs</li>
+              </ul>
+              
+              <h3>Technical Implementation</h3>
+              <p>Key HTML elements and techniques used:</p>
+              <ul>
+                  <li><strong>SVG Visualization:</strong> Created an interactive SVG representation of the site structure</li>
+                  <li><strong>Keyboard Accessibility:</strong> Added keyboard support for SVG interactive elements</li>
+                  <li><strong>Text-Based Alternative:</strong> Provided a text-based sitemap for accessibility</li>
+                  <li><strong>Visual Styling:</strong> Used consistent visual language to represent different types of pages</li>
+              </ul>
+              
+              <h4>SVG Sitemap Implementation</h4>
+              <div class="code-example">
+                  <pre><span class="tag-highlight">&lt;svg</span> <span class="attribute-highlight">viewBox</span>=<span class="value-highlight">"0 0 1000 600"</span> <span class="attribute-highlight">aria-labelledby</span>=<span class="value-highlight">"sitemap-title"</span> <span class="attribute-highlight">role</span>=<span class="value-highlight">"img"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;title</span> <span class="attribute-highlight">id</span>=<span class="value-highlight">"sitemap-title"</span><span class="tag-highlight">&gt;</span>Zero Hunger Initiative Website Sitemap<span class="tag-highlight">&lt;/title&gt;</span>
+  
+  <span class="comment-highlight">&lt;!-- Links (draw these first so they appear beneath nodes) --&gt;</span>
+  <span class="tag-highlight">&lt;line</span> <span class="attribute-highlight">x1</span>=<span class="value-highlight">"500"</span> <span class="attribute-highlight">y1</span>=<span class="value-highlight">"80"</span> <span class="attribute-highlight">x2</span>=<span class="value-highlight">"500"</span> <span class="attribute-highlight">y2</span>=<span class="value-highlight">"150"</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"link"</span><span class="tag-highlight">&gt;</span><span class="tag-highlight">&lt;/line&gt;</span>
+  <span class="comment-highlight">&lt;!-- Additional links --&gt;</span>
+  
+  <span class="comment-highlight">&lt;!-- Nodes --&gt;</span>
+  <span class="tag-highlight">&lt;a</span> <span class="attribute-highlight">href</span>=<span class="value-highlight">"splash.html"</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"node"</span> <span class="attribute-highlight">tabindex</span>=<span class="value-highlight">"0"</span><span class="tag-highlight">&gt;</span>
+      <span class="tag-highlight">&lt;rect</span> <span class="attribute-highlight">x</span>=<span class="value-highlight">"450"</span> <span class="attribute-highlight">y</span>=<span class="value-highlight">"30"</span> <span class="attribute-highlight">width</span>=<span class="value-highlight">"100"</span> <span class="attribute-highlight">height</span>=<span class="value-highlight">"40"</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"node-bg"</span><span class="tag-highlight">&gt;</span><span class="tag-highlight">&lt;/rect&gt;</span>
+      <span class="tag-highlight">&lt;text</span> <span class="attribute-highlight">x</span>=<span class="value-highlight">"500"</span> <span class="attribute-highlight">y</span>=<span class="value-highlight">"55"</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"node-text"</span><span class="tag-highlight">&gt;</span>Splash Screen<span class="tag-highlight">&lt;/text&gt;</span>
+  <span class="tag-highlight">&lt;/a&gt;</span>
+  <span class="comment-highlight">&lt;!-- Additional nodes --&gt;</span>
+<span class="tag-highlight">&lt;/svg&gt;</span></pre>
+              </div>
+              
+              <h4>JavaScript for SVG Interactivity</h4>
+              <div class="code-example">
+                  <pre>// Add keyboard navigation support for the SVG elements
+const nodes = document.querySelectorAll('.node');
+
+nodes.forEach(node => {
+    node.addEventListener('keydown', function(e) {
+        if (e.key === 'Enter' || e.key === ' ') {
+            this.click();
+        }
+    });
+});</pre>
+              </div>
+          </section>
+          
+          <section id="content-page" class="editor-section">
+              <h2 class="section-title">Content Page: Global Partnerships</h2>
+              <h3>Purpose & Requirements</h3>
+              <p>The Global Partnerships content page provides information about collaborative efforts to combat hunger worldwide. It needed to present complex partnership information in an organized, engaging format with interactive elements to enhance understanding.</p>
+              
+              <h3>Information Architecture Considerations</h3>
+              <p>Key IA principles applied to the content page:</p>
+              <ul>
+                  <li><strong>Content Chunking:</strong> Broke down complex information into manageable sections</li>
+                  <li><strong>Progressive Disclosure:</strong> Presented key information first, with details available through interaction</li>
+                  <li><strong>Multiple Representations:</strong> Provided both textual and visual representations of partnership information</li>
+                  <li><strong>Clear Navigation:</strong> Implemented internal page navigation for easy access to specific sections</li>
+              </ul>
+              
+              <h3>Technical Implementation</h3>
+              <p>Key HTML elements and techniques used:</p>
+              <ul>
+                  <li><strong>Interactive Map:</strong> Created an SVG map with interactive regions and points</li>
+                  <li><strong>Timeline Visualization:</strong> Implemented a responsive timeline to show partnership evolution</li>
+                  <li><strong>Card Components:</strong> Used cards to present different partnership categories</li>
+                  <li><strong>Tooltip System:</strong> Added tooltips to provide additional information on hover/focus</li>
+              </ul>
+              
+              <h4>Interactive Map Implementation</h4>
+              <div class="code-example">
+                  <pre><span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"partnership-map"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;svg</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"map-svg"</span> <span class="attribute-highlight">viewBox</span>=<span class="value-highlight">"0 0 1000 500"</span> <span class="attribute-highlight">aria-labelledby</span>=<span class="value-highlight">"map-title"</span> <span class="attribute-highlight">role</span>=<span class="value-highlight">"img"</span><span class="tag-highlight">&gt;</span>
+      <span class="tag-highlight">&lt;title</span> <span class="attribute-highlight">id</span>=<span class="value-highlight">"map-title"</span><span class="tag-highlight">&gt;</span>Global Partnership Map<span class="tag-highlight">&lt;/title&gt;</span>
+      
+      <span class="comment-highlight">&lt;!-- Simplified world map regions --&gt;</span>
+      <span class="tag-highlight">&lt;path</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"map-region"</span> <span class="attribute-highlight">d</span>=<span class="value-highlight">"M200,150 L300,150 L350,200 L300,250 L200,250 L150,200 Z"</span> <span class="attribute-highlight">data-region</span>=<span class="value-highlight">"North America"</span> <span class="attribute-highlight">tabindex</span>=<span class="value-highlight">"0"</span><span class="tag-highlight">&gt;</span><span class="tag-highlight">&lt;/path&gt;</span>
+      <span class="comment-highlight">&lt;!-- Additional regions --&gt;</span>
+      
+      <span class="comment-highlight">&lt;!-- Partnership points --&gt;</span>
+      <span class="tag-highlight">&lt;circle</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"map-point"</span> <span class="attribute-highlight">cx</span>=<span class="value-highlight">"250"</span> <span class="attribute-highlight">cy</span>=<span class="value-highlight">"200"</span> <span class="attribute-highlight">r</span>=<span class="value-highlight">"5"</span> <span class="attribute-highlight">data-project</span>=<span class="value-highlight">"North American Food Recovery Network"</span> <span class="attribute-highlight">tabindex</span>=<span class="value-highlight">"0"</span><span class="tag-highlight">&gt;</span><span class="tag-highlight">&lt;/circle&gt;</span>
+      <span class="comment-highlight">&lt;!-- Additional points --&gt;</span>
+  <span class="tag-highlight">&lt;/svg&gt;</span>
+  
+  <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"map-tooltip"</span> <span class="attribute-highlight">id</span>=<span class="value-highlight">"map-tooltip"</span><span class="tag-highlight">&gt;</span><span class="tag-highlight">&lt;/div&gt;</span>
+<span class="tag-highlight">&lt;/div&gt;</span></pre>
+              </div>
+              
+              <h4>JavaScript for Map Interactivity</h4>
+              <div class="code-example">
+                  <pre>// Interactive map functionality
+document.addEventListener('DOMContentLoaded', function() {
+    const mapRegions = document.querySelectorAll('.map-region');
+    const mapPoints = document.querySelectorAll('.map-point');
+    const tooltip = document.getElementById('map-tooltip');
+    
+    // Function to show tooltip
+    function showTooltip(text, x, y) {
+        tooltip.textContent = text;
+        tooltip.style.left = x + 'px';
+        tooltip.style.top = y + 'px';
+        tooltip.style.opacity = 1;
+    }
+    
+    // Function to hide tooltip
+    function hideTooltip() {
+        tooltip.style.opacity = 0;
+    }
+    
+    // Add event listeners to regions
+    mapRegions.forEach(region => {
+        region.addEventListener('mouseover', function(e) {
+            const regionName = this.getAttribute('data-region');
+            showTooltip(regionName, e.pageX - 100, e.pageY - 100);
+            this.classList.add('active');
+        });
+        
+        // Additional event listeners for mouseout, focus, blur
+    });
+    
+    // Add event listeners to points
+    mapPoints.forEach(point => {
+        // Similar event listeners for points
+    });
+});</pre>
+              </div>
+          </section>
+          
+          <section id="svg-elements" class="editor-section">
+              <h2 class="section-title">SVG Interactive Elements</h2>
+              <h3>Purpose & Implementation</h3>
+              <p>I implemented various SVG interactive elements across the website to enhance user engagement and provide visual representations of complex information. These elements were designed to be both visually appealing and functionally useful.</p>
+              
+              <h3>Key SVG Implementations</h3>
+              <ul>
+                  <li><strong>Sitemap Visualization:</strong> Created an interactive SVG representation of the website structure</li>
+                  <li><strong>Partnership Map:</strong> Implemented a simplified world map with interactive regions and points</li>
+                  <li><strong>Timeline Visualization:</strong> Designed a responsive timeline using SVG elements</li>
+              </ul>
+              
+              <h3>Accessibility Considerations</h3>
+              <p>To ensure SVG elements were accessible to all users, I implemented the following measures:</p>
+              <ul>
+                  <li><strong>ARIA Attributes:</strong> Added appropriate ARIA roles, labels, and descriptions</li>
+                  <li><strong>Keyboard Support:</strong> Ensured all interactive elements were accessible via keyboard</li>
+                  <li><strong>Focus Management:</strong> Implemented proper focus states for interactive elements</li>
+                  <li><strong>Alternative Representations:</strong> Provided text-based alternatives for visual information</li>
+              </ul>
+              
+              <h4>Example: Accessible SVG Implementation</h4>
+              <div class="code-example">
+                  <pre><span class="tag-highlight">&lt;svg</span> <span class="attribute-highlight">viewBox</span>=<span class="value-highlight">"0 0 1000 500"</span> <span class="attribute-highlight">aria-labelledby</span>=<span class="value-highlight">"chart-title chart-desc"</span> <span class="attribute-highlight">role</span>=<span class="value-highlight">"img"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;title</span> <span class="attribute-highlight">id</span>=<span class="value-highlight">"chart-title"</span><span class="tag-highlight">&gt;</span>Partnership Growth Chart<span class="tag-highlight">&lt;/title&gt;</span>
+  <span class="tag-highlight">&lt;desc</span> <span class="attribute-highlight">id</span>=<span class="value-highlight">"chart-desc"</span><span class="tag-highlight">&gt;</span>A chart showing the growth of partnerships from 2015 to 2024, increasing from 15 to 120 partners.<span class="tag-highlight">&lt;/desc&gt;</span>
+  
+  <span class="comment-highlight">&lt;!-- Chart elements --&gt;</span>
+  
+  <span class="comment-highlight">&lt;!-- Interactive elements with keyboard support --&gt;</span>
+  <span class="tag-highlight">&lt;g</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"data-point"</span> <span class="attribute-highlight">tabindex</span>=<span class="value-highlight">"0"</span> <span class="attribute-highlight">role</span>=<span class="value-highlight">"button"</span> <span class="attribute-highlight">aria-label</span>=<span class="value-highlight">"2020: 75 partners"</span><span class="tag-highlight">&gt;</span>
+      <span class="tag-highlight">&lt;circle</span> <span class="attribute-highlight">cx</span>=<span class="value-highlight">"500"</span> <span class="attribute-highlight">cy</span>=<span class="value-highlight">"250"</span> <span class="attribute-highlight">r</span>=<span class="value-highlight">"8"</span><span class="tag-highlight">&gt;</span><span class="tag-highlight">&lt;/circle&gt;</span>
+      <span class="tag-highlight">&lt;text</span> <span class="attribute-highlight">x</span>=<span class="value-highlight">"500"</span> <span class="attribute-highlight">y</span>=<span class="value-highlight">"230"</span><span class="tag-highlight">&gt;</span>2020<span class="tag-highlight">&lt;/text&gt;</span>
+  <span class="tag-highlight">&lt;/g&gt;</span>
+<span class="tag-highlight">&lt;/svg&gt;</span></pre>
+              </div>
+          </section>
+          
+          <section id="challenges" class="editor-section">
+              <h2 class="section-title">Challenges & Lessons Learned</h2>
+              <h3>Challenges Faced</h3>
+              <ol>
+                  <li><strong>SVG Accessibility:</strong> Making SVG interactive elements fully accessible required careful consideration of ARIA attributes, keyboard support, and focus management.</li>
+                  <li><strong>Responsive SVG:</strong> Creating SVG visualizations that worked well across different screen sizes was challenging.</li>
+                  <li><strong>Information Organization:</strong> Structuring complex partnership information in a way that was both comprehensive and digestible required multiple iterations.</li>
+              </ol>
+              
+              <h3>Solutions & Lessons</h3>
+              <ol>
+                  <li>Implemented a comprehensive accessibility strategy for SVG elements, including ARIA attributes, keyboard support, and text alternatives.</li>
+                  <li>Used the viewBox attribute and relative positioning to create responsive SVG visualizations that adapt to different screen sizes.</li>
+                  <li>Applied information architecture principles to organize content into logical sections with clear relationships and navigation paths.</li>
+              </ol>
+              
+              <p>These challenges reinforced the importance of considering both visual design and functional requirements when creating interactive elements. I also learned the value of testing across different devices and with assistive technologies to ensure a consistent, accessible experience for all users.</p>
+          </section>
+          
+          <section id="accessibility" class="editor-section">
+              <h2 class="section-title">Accessibility</h2>
+              <p>I prioritized accessibility in my implementations through the following measures:</p>
+              <ul>
+                  <li><strong>Semantic HTML:</strong> Used appropriate HTML elements to provide structural meaning</li>
+                  <li><strong>ARIA Attributes:</strong> Added ARIA roles, states, and properties to enhance screen reader compatibility</li>
+                  <li><strong>Keyboard Navigation:</strong> Ensured all interactive elements are accessible via keyboard</li>
+                  <li><strong>Focus Management:</strong> Implemented proper focus states for interactive elements</li>
+                  <li><strong>Alternative Text:</strong> Provided descriptive alt text for all images and SVG elements</li>
+                  <li><strong>Color Contrast:</strong> Ensured sufficient contrast between text and background colors</li>
+                  <li><strong>Responsive Design:</strong> Created layouts that adapt to different screen sizes and zoom levels</li>
+              </ul>
+              <p>All pages were tested using both automated tools (WAVE, Lighthouse) and manual testing with keyboard navigation and screen readers to identify and resolve potential accessibility issues.</p>
+          </section>
+          
+          <section id="compliance" class="editor-section">
+              <h2 class="section-title">Compliance</h2>
+              <p>The pages I implemented comply with Janet regulations governing web page publication in the following ways:</p>
+              <ul>
+                  <li><strong>Valid HTML5:</strong> All pages have been validated using the W3C Markup Validation Service</li>
+                  <li><strong>Accessibility:</strong> Pages meet WCAG 2.1 Level AA standards for accessibility</li>
+                  <li><strong>Responsive Design:</strong> All pages function properly across different devices and screen sizes</li>
+                  <li><strong>Cross-Browser Compatibility:</strong> Tested and functional across major browsers</li>
+                  <li><strong>Performance:</strong> Optimized for reasonable load times and performance</li>
+                  <li><strong>Security:</strong> Implemented secure coding practices</li>
+              </ul>
+              <p>These measures ensure that the pages meet the technical and ethical standards required for academic web publishing.</p>
+          </section>
+          
+          <section id="references" class="editor-section">
+              <h2 class="section-title">References</h2>
+              <ul class="reference-list">
+                  <li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility Guidelines (WCAG) 2.1</a> - Used for ensuring accessibility standards compliance</li>
+                  <li><a href="https://www.w3.org/WAI/tutorials/svg/">WAI SVG Accessibility Tutorials</a> - Reference for creating accessible SVG elements</li>
+                  <li><a href="https://developer.mozilla.org/en-US/docs/Web/SVG">MDN Web Docs: SVG</a> - Reference for SVG implementation best practices</li>
+                  <li><a href="https://www.nngroup.com/articles/information-architecture-study-guide/">Nielsen Norman Group: Information Architecture Study Guide</a> - Applied these principles to site structure</li>
+                  <li><a href="https://sdgs.un.org/goals/goal2">UN Sustainable Development Goal 2: Zero Hunger</a> - Source for content related to global partnerships</li>
+                  <li>University of Westminster Module Materials - Web Design and Development lecture notes and tutorials</li>
+              </ul>
+          </section>
+          
+          <a href="#top" class="go-to-top" aria-label="Go to top of page">↑</a>
+      </div>
+  </main>
+
+  <footer>
+      <div class="container footer-content">
+          <div class="footer-section">
+              <h4>About Us</h4>
+              <p>We are dedicated to supporting UN SDG #2: Zero Hunger through education, advocacy, and action.</p>
+          </div>
+          <div class="footer-section">
+              <h4>Quick Links</h4>
+              <a href="home.html" class="footer-link">Home</a><br>
+              <a href="volunteer.html" class="footer-link">Volunteer</a><br>
+              <a href="feedback.html" class="footer-link">Feedback</a><br>
+              <a href="sitemap.html" class="footer-link">Sitemap</a><br>
+          </div>
+          <div class="footer-section">
+              <h4>Page Editors</h4>
+              <a href="pageEditor_ST1.html" class="footer-link">Yusuke's Page</a><br>
+              <a href="pageEditor_ST2.html" class="footer-link">Arnav's Page</a><br>
+              <a href="pageEditor_ST3.html" class="footer-link">Pranav's Page</a><br>
+              <a href="pageEditor_ST4.html" class="footer-link">Ayur's Page</a><br>
+          </div>
+      </div>
+      <div class="copyright">
+          <p>&copy; 2025 Zero Hunger Initiative. All rights reserved.</p>
+          <p>This website meets accessibility standards. <a href="validation_ST4.html">Validation</a></p>
+      </div>
+  </footer>
+</body>
+</html>

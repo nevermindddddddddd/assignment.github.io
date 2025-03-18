@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero Hunger Initiative - Global Partnerships</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      .content-header {
+          background: url('/placeholder.svg?height=600&width=1200') center/cover no-repeat;
+          background-color: rgba(0, 0, 0, 0.6);
+          background-blend-mode: overlay;
+          color: white;
+          padding: 3rem 0;
+          text-align: center;
+          margin-bottom: 2rem;
+      }
+      
+      .content-container {
+          max-width: 1000px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
+      
+      .content-nav {
+          background-color: white;
+          border-radius: 8px;
+          padding: 1.5rem;
+          margin-bottom: 2rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .content-nav-title {
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+          color: var(--primary-dark);
+          border-bottom: 2px solid var(--primary-light);
+          padding-bottom: 0.5rem;
+      }
+      
+      .content-nav-list {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+      }
+      
+      .content-nav-list li a {
+          display: block;
+          padding: 0.5rem 1rem;
+          background-color: var(--neutral-200);
+          border-radius: 4px;
+          transition: all 0.3s ease;
+      }
+      
+      .content-nav-list li a:hover {
+          background-color: var(--primary-light);
+          text-decoration: none;
+      }
+      
+      .content-section {
+          background-color: white;
+          border-radius: 8px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .section-header {
+          margin-bottom: 1.5rem;
+      }
+      
+      .section-title {
+          color: var(--primary-dark);
+          margin-bottom: 1rem;
+      }
+      
+      .partnership-card {
+          display: flex;
+          gap: 2rem;
+          margin-bottom: 2rem;
+      }
+      
+      .partnership-image {
+          flex: 0 0 300px;
+      }
+      
+      .partnership-image img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+      }
+      
+      .partnership-content {
+          flex: 1;
+      }
+      
+      .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1.5rem;
+          margin: 2rem 0;
+      }
+      
+      .stat-card {
+          background-color: var(--neutral-200);
+          padding: 1.5rem;
+          border-radius: 8px;
+          text-align: center;
+      }
+      
+      .stat-number {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: var(--primary);
+          margin-bottom: 0.5rem;
+      }
+      
+      .resources-list {
+          list-style: none;
+          padding: 0;
+      }
+      
+      .resources-list li {
+          margin-bottom: 1rem;
+          padding-left: 1.5rem;
+          position: relative;
+      }
+      
+      .resources-list li::before {
+          content: "→";
+          position: absolute;
+          left: 0;
+          color: var(--primary);
+      }
+      
+      .go-to-top {
+          position: fixed;
+          bottom: 2rem;
+          right: 2rem;
+          background-color: var(--primary);
+          color: var(--neutral-900);
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.5rem;
+          box-shadow: var(--box-shadow);
+          transition: all 0.3s ease;
+          z-index: 99;
+      }
+      
+      .go-to-top:hover {
+          background-color: var(--primary-dark);
+          color: var(--neutral-100);
+      }
+      
+      .partnership-map {
+          width: 100%;
+          height: 400px;
+          background-color: var(--neutral-200);
+          border-radius: 8px;
+          margin: 2rem 0;
+          position: relative;
+          overflow: hidden;
+      }
+      
+      .map-point {
+          position: absolute;
+          width: 20px;
+          height: 20px;
+          background-color: var(--primary);
+          border-radius: 50%;
+          transform: translate(-50%, -50%);
+          cursor: pointer;
+          transition: all 0.3s ease;
+      }
+      
+      .map-point:hover {
+          transform: translate(-50%, -50%) scale(1.5);
+          background-color: var(--primary-dark);
+      }
+      
+      .map-tooltip {
+          position: absolute;
+          background-color: var(--neutral-800);
+          color: white;
+          padding: 0.5rem 1rem;
+          border-radius: 4px;
+          font-size: 0.875rem;
+          z-index: 10;
+          width: 200px;
+          display: none;
+      }
+      
+      .partner-logos {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 2rem;
+          margin: 2rem 0;
+      }
+      
+      .partner-logo {
+          width: 150px;
+          height: 100px;
+          background-color: white;
+          border-radius: 8px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .partner-logo img {
+          max-width: 80%;
+          max-height: 80%;
+      }
+  </style>
+</head>
+<body>
+  <header>
+      <div class="container header-content">
+          <div class="logo">
+              <img src="/placeholder.svg?height=80&width=80" alt="Zero Hunger Initiative Logo">
+              <h1 class="site-title">Zero Hunger Initiative</h1>
+          </div>
+      </div>
+      <nav>
+          <div class="container nav-container">
+              <ul class="nav-list">
+                  <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+                  <li class="nav-item"><a href="volunteer.html" class="nav-link">Volunteer</a></li>
+                  <li class="nav-item"><a href="table.html" class="nav-link">Statistics</a></li>
+                  <li class="nav-item"><a href="profile.html" class="nav-link">User Profile</a></li>
+                  <li class="nav-item"><a href="feedback.html" class="nav-link">Feedback</a></li>
+                  <li class="nav-item"><a href="sitemap.html" class="nav-link">Sitemap</a></li>
+                  <li class="nav-item"><a href="team.html" class="nav-link">Our Team</a></li>
+              </ul>
+          </div>
+      </nav>
+  </header>
+
+  <main>
+      <section class="content-header">
+          <div class="container">
+              <h1>Global Partnerships</h1>
+              <p>Collaborative efforts to combat hunger and build sustainable food systems worldwide</p>
+          </div>
+      </section>
+      
+      <div class="content-container">
+          <div class="content-nav" id="top">
+              <h2 class="content-nav-title">Quick Navigation</h2>
+              <ul class="content-nav-list">
+                  <li><a href="#importance">Importance of Partnerships</a></li>
+                  <li><a href="#key-partners">Key Partners</a></li>
+                  <li><a href="#global-map">Global Impact Map</a></li>
+                  <li><a href="#success-stories">Success Stories</a></li>
+                  <li><a href="#get-involved">Get Involved</a></li>
+                  <li><a href="#resources">Resources</a></li>
+              </ul>
+          </div>
+          
+          <section id="importance" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">The Importance of Global Partnerships</h2>
+              </div>
+              
+              <div class="partnership-card">
+                  <div class="partnership-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Representatives from different organizations collaborating">
+                  </div>
+                  <div class="partnership-content">
+                      <p>Addressing global hunger requires coordinated action across sectors, borders, and disciplines. No single organization or government can solve this complex challenge alone. Partnerships bring together diverse expertise, resources, and perspectives to create more effective and sustainable solutions.</p>
+                      
+                      <p>The UN Sustainable Development Goal #2: Zero Hunger explicitly recognizes the importance of partnerships, calling for increased investment in rural infrastructure, agricultural research, and international cooperation to end hunger by 2030.</p>
+                      
+                      <h3>Key Benefits of Partnerships:</h3>
+                      <ul>
+                          <li>Pooling of resources and expertise</li>
+                          <li>Scaling of successful interventions</li>
+                          <li>Knowledge sharing and innovation</li>
+                          <li>Coordinated response to complex challenges</li>
+                          <li>Increased accountability and transparency</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="stats-grid">
+                  <div class="stat-card">
+                      <div class="stat-number">193</div>
+                      <p>Countries committed to SDG #2</p>
+                  </div>
+                  <div class="stat-card">
+                      <div class="stat-number">$267B</div>
+                      <p>Annual investment needed to end hunger</p>
+                  </div>
+                  <div class="stat-card">
+                      <div class="stat-number">40%</div>
+                      <p>More effective outcomes with partnerships</p>
+                  </div>
+                  <div class="stat-card">
+                      <div class="stat-number">1,200+</div>
+                      <p>Organizations in global hunger networks</p>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="key-partners" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Our Key Partners</h2>
+              </div>
+              
+              <p>The Zero Hunger Initiative collaborates with a diverse range of partners across sectors to maximize our impact. These partnerships enable us to leverage complementary strengths and create comprehensive approaches to food security.</p>
+              
+              <div class="partnership-card">
+                  <div class="partnership-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="United Nations agencies working together">
+                  </div>
+                  <div class="partnership-content">
+                      <h3>International Organizations</h3>
+                      <p>We work closely with UN agencies and international organizations that specialize in food security, agriculture, and nutrition. These partnerships provide access to global resources, expertise, and networks.</p>
+                      
+                      <h4>Key Partners:</h4>
+                      <ul>
+                          <li><strong>Food and Agriculture Organization (FAO)</strong> - Collaborating on sustainable agriculture practices and policy development</li>
+                          <li><strong>World Food Programme (WFP)</strong> - Partnering on emergency food assistance and resilience building</li>
+                          <li><strong>UNICEF</strong> - Working together on child nutrition and school feeding programs</li>
+                          <li><strong>International Fund for Agricultural Development (IFAD)</strong> - Cooperating on rural development and smallholder farming initiatives</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="partnership-card">
+                  <div class="partnership-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Government representatives discussing policy">
+                  </div>
+                  <div class="partnership-content">
+                      <h3>Governments and Public Sector</h3>
+                      <p>Collaboration with national and local governments is essential for creating enabling policy environments, mobilizing resources, and ensuring the sustainability of interventions.</p>
+                      
+                      <h4>Partnership Focus:</h4>
+                      <ul>
+                          <li>Policy development and implementation</li>
+                          <li>Integration of food security into national development plans</li>
+                          <li>Public investment in agriculture and nutrition</li>
+                          <li>Strengthening of public food distribution systems</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="partnership-card">
+                  <div class="partnership-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Private sector companies supporting food security">
+                  </div>
+                  <div class="partnership-content">
+                      <h3>Private Sector</h3>
+                      <p>Businesses bring innovation, efficiency, and resources to the fight against hunger. Our private sector partnerships focus on creating shared value that benefits communities while advancing business objectives.</p>
+                      
+                      <h4>Collaboration Areas:</h4>
+                      <ul>
+                          <li>Sustainable supply chain development</li>
+                          <li>Food fortification and nutrition innovation</li>
+                          <li>Digital solutions for agriculture</li>
+                          <li>Market access for smallholder farmers</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="partnership-card">
+                  <div class="partnership-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Civil society organizations working in communities">
+                  </div>
+                  <div class="partnership-content">
+                      <h3>Civil Society and NGOs</h3>
+                      <p>Civil society organizations provide grassroots connections, community trust, and specialized expertise. These partnerships ensure our work is responsive to local needs and contexts.</p>
+                      
+                      <h4>Key Contributions:</h4>
+                      <ul>
+                          <li>Community mobilization and engagement</li>
+                          <li>Local knowledge and contextual understanding</li>
+                          <li>Advocacy and accountability</li>
+                          <li>Direct implementation of programs</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="partner-logos">
+                  <div class="partner-logo">
+                      <img src="/placeholder.svg?height=80&width=120" alt="Partner Logo 1">
+                  </div>
+                  <div class="partner-logo">
+                      <img src="/placeholder.svg?height=80&width=120" alt="Partner Logo 2">
+                  </div>
+                  <div class="partner-logo">
+                      <img src="/placeholder.svg?height=80&width=120" alt="Partner Logo 3">
+                  </div>
+                  <div class="partner-logo">
+                      <img src="/placeholder.svg?height=80&width=120" alt="Partner Logo 4">
+                  </div>
+                  <div class="partner-logo">
+                      <img src="/placeholder.svg?height=80&width=120" alt="Partner Logo 5">
+                  </div>
+                  <div class="partner-logo">
+                      <img src="/placeholder.svg?height=80&width=120" alt="Partner Logo 6">
+                  </div>
+              </div>
+          </section>
+          
+          <section id="global-map" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Global Impact Map</h2>
+              </div>
+              
+              <p>Our partnerships span the globe, with collaborative projects addressing hunger and food insecurity in diverse contexts. Explore the map below to see where we work and the impact of our joint efforts.</p>
+              
+              <div class="partnership-map">
+                  <!-- Interactive map points -->
+                  <div class="map-point" style="top: 30%; left: 25%;" data-region="West Africa"></div>
+                  <div class="map-point" style="top: 45%; left: 55%;" data-region="South Asia"></div>
+                  <div class="map-point" style="top: 35%; left: 75%;" data-region="Southeast Asia"></div>
+                  <div class="map-point" style="top: 60%; left: 35%;" data-region="Southern Africa"></div>
+                  <div class="map-point" style="top: 25%; left: 15%;" data-region="Central America"></div>
+                  
+                  <!-- Map tooltips -->
+                  <div class="map-tooltip" id="tooltip-west-africa">
+                      <h4>West Africa</h4>
+                      <p>Partnering with 14 organizations to improve food systems resilience and nutrition for 2.3 million people.</p>
+                  </div>
+                  
+                  <div class="map-tooltip" id="tooltip-south-asia">
+                      <h4>South Asia</h4>
+                      <p>Collaborating with governments and NGOs to support sustainable agriculture reaching 4.7 million smallholder farmers.</p>
+                  </div>
+                  
+                  <div class="map-tooltip" id="tooltip-southeast-asia">
+                      <h4>Southeast Asia</h4>
+                      <p>Working with 8 partners to implement climate-smart agriculture and improve food security for 1.8 million people.</p>
+                  </div>
+                  
+                  <div class="map-tooltip" id="tooltip-southern-africa">
+                      <h4>Southern Africa</h4>
+                      <p>Partnering with 11 organizations to strengthen food systems and improve nutrition for 3.2 million people.</p>
+                  </div>
+                  
+                  <div class="map-tooltip" id="tooltip-central-america">
+                      <h4>Central America</h4>
+                      <p>Collaborating with 6 partners to enhance food security and nutrition for 1.5 million people in drought-prone areas.</p>
+                  </div>
+              </div>
+              
+              <p class="map-instruction">Hover over or tap the points on the map to learn more about our partnerships in each region.</p>
+          </section>
+          
+          <section id="success-stories" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Partnership Success Stories</h2>
+              </div>
+              
+              <div class="partnership-card">
+                  <div class="partnership-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Farmers in East Africa using improved techniques">
+                  </div>
+                  <div class="partnership-content">
+                      <h3>East Africa: Climate Resilience Alliance</h3>
+                      <p>A partnership between our initiative, the FAO, local governments, and private sector companies has helped 250,000 smallholder farmers in Kenya, Tanzania, and Ethiopia adopt climate-resilient agricultural practices.</p>
+                      
+                      <h4>Key Achievements:</h4>
+                      <ul>
+                          <li>40% increase in crop yields despite climate challenges</li>
+                          <li>30% reduction in post-harvest losses</li>
+                          <li>Improved access to markets for 150,000 farmers</li>
+                          <li>Significant improvement in household nutrition diversity</li>
+                      </ul>
+                      
+                      <p>This partnership demonstrates how coordinated action across sectors can create sustainable solutions that address multiple dimensions of food security.</p>
+                  </div>
+              </div>
+              
+              <div class="partnership-card">
+                  <div class="partnership-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="School feeding program in action">
+                  </div>
+                  <div class="partnership-content">
+                      <h3>South Asia: School Nutrition Partnership</h3>
+                      <p>A collaborative effort between our initiative, UNICEF, national governments, and local food producers has established sustainable school feeding programs reaching 1.2 million children across South Asia.</p>
+                      
+                      <h4>Impact:</h4>
+                      <ul>
+                          <li>15% increase in school attendance</li>
+                          <li>Improved nutritional status for participating children</li>
+                          <li>Creation of stable markets for 75,000 local smallholder farmers</li>
+                          <li>Integration of nutrition education into school curricula</li>
+                      </ul>
+                      
+                      <p>This partnership creates a virtuous cycle: improving child nutrition and education while supporting local food systems and economies.</p>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="get-involved" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Get Involved in Our Partnerships</h2>
+              </div>
+              
+              <p>We are always seeking new partners who share our commitment to ending hunger and building sustainable food systems. There are many ways to engage with our partnership network:</p>
+              
+              <div class="partnership-card">
+                  <div class="partnership-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Organizations signing partnership agreement">
+                  </div>
+                  <div class="partnership-content">
+                      <h3>Partnership Opportunities</h3>
+                      <ul>
+                          <li><strong>Become a Funding Partner:</strong> Support our programs financially to help scale proven interventions.</li>
+                          <li><strong>Technical Collaboration:</strong> Share expertise and technical resources to strengthen our approaches.</li>
+                          <li><strong>Implementation Partner:</strong> Work with us to implement programs in communities where you operate.</li>
+                          <li><strong>Advocacy Partner:</strong> Join our efforts to influence policy and raise awareness about hunger issues.</li>
+                          <li><strong>Research Partner:</strong> Collaborate on research to develop evidence-based solutions to food insecurity.</li>
+                      </ul>
+                      
+                      <p>To explore partnership opportunities, please contact our Partnership Development Team at <a href="mailto:partnerships@zerohunger.org">partnerships@zerohunger.org</a> or complete our <a href="#">Partnership Interest Form</a>.</p>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="resources" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Partnership Resources</h2>
+              </div>
+              
+              <p>Access these resources to learn more about our partnership approach and opportunities:</p>
+              
+              <ul class="resources-list">
+                  <li><a href="#">Partnership Strategy Document</a> - Our approach to building effective collaborations for food security</li>
+                  <li><a href="#">Partnership Case Studies</a> - Detailed examples of successful partnerships and their impacts</li>
+                  <li><a href="#">Due Diligence Framework</a> - Our process for assessing potential partnerships</li>
+                  <li><a href="#">Partnership Toolkit</a> - Resources for developing and managing effective partnerships</li>
+                  <li><a href="#">Global Food Security Partnership Map</a> - Interactive tool showing partnerships worldwide</li>
+                  <li><a href="#">Annual Partnership Report</a> - Overview of our partnership activities and achievements</li>
+              </ul>
+          </section>
+          
+          <a href="#top" class="go-to-top" aria-label="Go to top of page">↑</a>
+      </div>
+  </main>
+
+  <footer>
+      <div class="container footer-content">
+          <div class="footer-section">
+              <h4>About Us</h4>
+              <p>We are dedicated to supporting UN SDG #2: Zero Hunger through education, advocacy, and action.</p>
+          </div>
+          <div class="footer-section">
+              <h4>Quick Links</h4>
+              <a href="home.html" class="footer-link">Home</a>
+              <a href="volunteer.html" class="footer-link">Volunteer</a>
+              <a href="feedback.html" class="footer-link">Feedback</a>
+              <a href="sitemap.html" class="footer-link">Sitemap</a>
+          </div>
+          <div class="footer-section">
+              <h4>Page Editors</h4>
+              <a href="pageEditor_ST1.html" class="footer-link">Student 1's Page</a>
+              <a href="pageEditor_ST2.html" class="footer-link">Student 2's Page</a>
+              <a href="pageEditor_ST3.html" class="footer-link">Student 3's Page</a>
+              <a href="pageEditor_ST4.html" class="footer-link">Student 4's Page</a>
+          </div>
+      </div>
+      <div class="copyright">
+          <p>&copy; 2025 Zero Hunger Initiative. All rights reserved.</p>
+          <p>This website meets accessibility standards. <a href="validation_ST4.html">Validation</a></p>
+      </div>
+  </footer>
+  
+  <script>
+      // Interactive map functionality
+      document.addEventListener('DOMContentLoaded', function() {
+          const mapPoints = document.querySelectorAll('.map-point');
+          
+          mapPoints.forEach(point => {
+              // Create tooltip for each point
+              const region = point.getAttribute('data-region');
+              const tooltip = document.getElementById(`tooltip-${region.toLowerCase().replace(' ', '-')}`);
+              
+              // Show tooltip on hover/focus
+              point.addEventListener('mouseenter', function() {
+                  hideAllTooltips();
+                  positionTooltip(tooltip, point);
+                  tooltip.style.display = 'block';
+              });
+              
+              point.addEventListener('focus', function() {
+                  hideAllTooltips();
+                  positionTooltip(tooltip, point);
+                  tooltip.style.display = 'block';
+              });
+              
+              // Hide tooltip when mouse leaves
+              point.addEventListener('mouseleave', function() {
+                  tooltip.style.display = 'none';
+              });
+              
+              point.addEventListener('blur', function() {
+                  tooltip.style.display = 'none';
+              });
+          });
+          
+          function hideAllTooltips() {
+              document.querySelectorAll('.map-tooltip').forEach(tooltip => {
+                  tooltip.style.display = 'none';
+              });
+          }
+          
+          function positionTooltip(tooltip, point) {
+              const pointRect = point.getBoundingClientRect();
+              const mapRect = document.querySelector('.partnership-map').getBoundingClientRect();
+              
+              tooltip.style.left = (pointRect.left - mapRect.left + 15) + 'px';
+              tooltip.style.top = (pointRect.top - mapRect.top - 5) + 'px';
+          }
+      });
+  </script>
+</body>
+</html>
+

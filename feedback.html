@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feedback - Zero Hunger Initiative</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .feedback-header {
+            background-color: var(--primary-light);
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .feedback-container {
+            background-color: var(--neutral-100);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .feedback-form {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        fieldset {
+            border: 1px solid var(--neutral-300);
+            border-radius: 8px;
+            padding: 1.5rem;
+        }
+
+        legend {
+            padding: 0 0.5rem;
+            font-weight: 600;
+            color: var(--secondary);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .form-group {
+            margin-bottom: 1rem;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+        }
+
+        input, textarea, select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid var(--neutral-400);
+            border-radius: 4px;
+            font-family: inherit;
+            font-size: 1rem;
+        }
+
+        input:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 0 2px rgba(229, 183, 0, 0.2);
+        }
+
+        input:invalid, textarea:invalid, select:invalid {
+            border-color: var(--error);
+        }
+
+        .error-message {
+            color: var(--error);
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
+        }
+
+        input:invalid + .error-message,
+        textarea:invalid + .error-message,
+        select:invalid + .error-message {
+            display: block;
+        }
+
+        .checkbox-group, .radio-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            margin-top: 0.5rem;
+        }
+
+        .checkbox-item, .radio-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .checkbox-item input, .radio-item input {
+            width: auto;
+        }
+
+        .rating-group {
+            display: flex;
+            gap: 0.5rem;
+            margin-top: 0.5rem;
+        }
+
+        .rating-item {
+            font-size: 2rem;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .rating-item:hover {
+            transform: scale(1.2);
+        }
+
+        .counter {
+            display: flex;
+            justify-content: space-between;
+            font-size: 0.875rem;
+            color: var(--neutral-600);
+            margin-top: 0.25rem;
+        }
+
+        .select-scrolling {
+            height: 100px;
+            overflow-y: auto;
+        }
+
+        .file-input {
+            padding: 0.5rem 0;
+        }
+
+        .submit-button {
+            background-color: var(--primary);
+            color: var(--neutral-900);
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 4px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            align-self: flex-start;
+        }
+
+        .submit-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/placeholder.svg?height=50&width=50" alt="Zero Hunger Logo">
+                    <h1>Zero Hunger Initiative</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="table.html">Programs</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="feedback.html" class="active">Feedback</a></li>
+                        <li><a href="sitemap.html">Sitemap</a></li>
+                        <li><a href="team.html">Team</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="feedback-header">
+            <div class="container">
+                <h1>Share Your Feedback</h1>
+                <p>Help us improve our programs and initiatives by providing your valuable feedback.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="feedback-container">
+                <form class="feedback-form">
+                    <fieldset>
+                        <legend>Personal Information</legend>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="fullName">Full Name</label>
+                                <input type="text" id="fullName" name="fullName" required title="Please enter your full name">
+                                <span class="error-message">Please enter your full name</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Email Address</label>
+                                <input type="email" id="email" name="email" required title="Please enter a valid email address">
+                                <span class="error-message">Please enter a valid email address</span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="phone">Phone Number</label>
+                                <input type="tel" id="phone" name="phone" pattern="[0-9]{10}" title="Please enter a 10-digit phone number">
+                                <span class="error-message">Please enter a valid 10-digit phone number</span>
+                            </div>
+                            <div class="form-group">
+                                <label for="age">Age</label>
+                                <input type="number" id="age" name="age" min="13" max="120">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="address">Address</label>
+                            <textarea id="address" name="address" rows="3"></textarea>
+                        </div>
+                    </fieldset>
+
+                    <fieldset>
+                        <legend>Feedback Details</legend>
+                        <div class="form-group">
+                            <label for="feedbackType">Type of Feedback</label>
+                            <select id="feedbackType" name="feedbackType" required>
+                                <option value="">-- Select Feedback Type --</option>
+                                <option value="general">General Feedback</option>
+                                <option value="program">Program Specific</option>
+                                <option value="volunteer">Volunteer Experience</option>
+                                <option value="website">Website Feedback</option>
+                                <option value="suggestion">Suggestion</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="programs">Programs You've Participated In</label>
+                            <select id="programs" name="programs" multiple class="select-scrolling">
+                                <option value="community-garden">Community Garden Initiative</option>
+                                <option value="food-bank">Food Bank Assistant</option>
+                                <option value="nutrition-education">Nutrition Education</option>
+                                <option value="sustainable-farming">Sustainable Farming</option>
+                                <option value="food-rescue">Food Rescue</option>
+                                <option value="policy-advocacy">Policy Advocacy</option>
+                                <option value="school-garden">School Garden Program</option>
+                                <option value="international-relief">International Relief</option>
+                            </select>
+                            <small>Hold Ctrl (or Cmd) to select multiple options</small>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="relatedTopics">Related Topics</label>
+                            <input list="topics" id="relatedTopics" name="relatedTopics" placeholder="Type or select a topic">
+                            <datalist id="topics">
+                                <option value="Food Security">
+                                <option value="Sustainable Agriculture">
+                                <option value="Nutrition">
+                                <option value="Food Waste">
+                                <option value="Community Engagement">
+                                <option value="Policy">
+                                <option value="Education">
+                                <option value="Technology">
+                            </datalist>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Areas of Improvement (Check all that apply)</label>
+                            <div class="checkbox-group">
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="communication" name="improvement" value="communication">
+                                    <label for="communication">Communication</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="resources" name="improvement" value="resources">
+                                    <label for="resources">Resources</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="training" name="improvement" value="training">
+                                    <label for="training">Training</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="organization" name="improvement" value="organization">
+                                    <label for="organization">Organization</label>
+                                </div>
+                                <div class="checkbox-item">
+                                    <input type="checkbox" id="impact" name="improvement" value="impact">
+                                    <label for="impact">Impact</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Overall Experience</label>
+                            <div class="radio-group">
+                                <div class="radio-item">
+                                    <input type="radio" id="excellent" name="experience" value="excellent">
+                                    <label for="excellent">Excellent</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="good" name="experience" value="good">
+                                    <label for="good">Good</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="average" name="experience" value="average">
+                                    <label for="average">Average</label>
+                                </div>
+                                <div class="radio-item">
+                                    <input type="radio" id="poor" name="experience" value="poor">
+                                    <label for="poor">Poor</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label>How would you rate our impact?</label>
+                            <div class="rating-group">
+                                <span class="rating-item" role="button" tabindex="0" aria-label="1 star">⭐</span>
+                                <span class="rating-item" role="button" tabindex="0" aria-label="2 stars">⭐</span>
+                                <span class="rating-item" role="button" tabindex="0" aria-label="3 stars">⭐</span>
+                                <span class="rating-item" role="button" tabindex="0" aria-label="4 stars">⭐</span>
+                                <span class="rating-item" role="button" tabindex="0" aria-label="5 stars">⭐</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feedbackDate">Date of Experience</label>
+                            <input type="date" id="feedbackDate" name="feedbackDate">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="feedbackTime">Time of Submission</label>
+                            <input type="datetime-local" id="feedbackTime" name="feedbackTime">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="comments">Detailed Comments</label>
+                            <textarea id="comments" name="comments" rows="5" maxlength="500" required></textarea>
+                            <div class="counter">
+                                <span>Be specific and constructive</span>
+                                <span id="charCount">0/500</span>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="attachment">Attach a File (optional)</label>
+                            <input type="file" id="attachment" name="attachment" class="file-input">
+                            <small>Max file size: 5MB</small>
+                        </div>
+                    </fieldset>
+
+                    <button type="submit" class="submit-button">Submit Feedback</button>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Zero Hunger Initiative</h3>
+                    <p>Working together to achieve SDG 2: Zero Hunger by 2030.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="table.html">Programs</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Page Editors</h3>
+                    <ul>
+                        <li><a href="pageEditor_ST1.html">Student 1</a></li>
+                        <li><a href="pageEditor_ST2.html">Student 2</a></li>
+                        <li><a href="pageEditor_ST3.html">Student 3</a></li>
+                        <li><a href="pageEditor_ST4.html">Student 4</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Zero Hunger Initiative. All rights reserved.</p>
+                <p>This page is maintained by <a href="pageEditor_ST3.html">Student 3</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Character counter for comments
+        const commentsTextarea = document.getElementById('comments');
+        const charCount = document.getElementById('charCount');
+        
+        commentsTextarea.addEventListener('input', function() {
+            const currentLength = this.value.length;
+            const maxLength = this.getAttribute('maxlength');
+            charCount.textContent = `${currentLength}/${maxLength}`;
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home - Zero Hunger Initiative</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .hero {
+            background-image: url('/placeholder.svg?height=600&width=1200');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            text-align: center;
+            padding: 5rem 1rem;
+            position: relative;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero-content {
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            color: white;
+        }
+
+        .hero p {
+            font-size: 1.25rem;
+            margin-bottom: 2rem;
+        }
+
+        .content-tiles {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin: 3rem 0;
+        }
+
+        .tile {
+            position: relative;
+            height: 250px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .tile:hover {
+            transform: translateY(-10px);
+        }
+
+        .tile img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .tile-content {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            padding: 1rem;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.8), transparent);
+            color: white;
+        }
+
+        .tile-content h3 {
+            margin-bottom: 0.5rem;
+            color: white;
+        }
+
+        .mission-section {
+            background-color: var(--primary-light);
+            padding: 3rem 1rem;
+            margin: 3rem 0;
+            border-radius: 8px;
+        }
+
+        .mission-content {
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/placeholder.svg?height=50&width=50" alt="Zero Hunger Logo">
+                    <h1>Zero Hunger Initiative</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="home.html" class="active">Home</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="table.html">Programs</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="sitemap.html">Sitemap</a></li>
+                        <li><a href="team.html">Team</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Zero Hunger by 2030</h1>
+                <p>Join our mission to end hunger, achieve food security, improve nutrition, and promote sustainable agriculture worldwide.</p>
+                <a href="#learn-more" class="btn">Learn More</a>
+            </div>
+        </section>
+
+        <div class="container">
+            <section id="learn-more" class="mission-section">
+                <div class="mission-content">
+                    <h2>Our Mission</h2>
+                    <p>The Zero Hunger Initiative is dedicated to supporting the United Nations Sustainable Development Goal 2: Zero Hunger. We work to end hunger, achieve food security, improve nutrition, and promote sustainable agriculture by 2030.</p>
+                    <p>Through education, advocacy, and direct action, we strive to create a world where everyone has access to nutritious food and where food systems are sustainable and resilient.</p>
+                </div>
+            </section>
+
+            <h2 class="text-center">Explore Our Resources</h2>
+            <div class="content-tiles">
+                <a href="content_ST1.html" class="tile">
+                    <img src="/placeholder.svg?height=250&width=250" alt="Food Security">
+                    <div class="tile-content">
+                        <h3>Food Security</h3>
+                        <p>Learn about global food security challenges and solutions</p>
+                    </div>
+                </a>
+                <a href="content_ST2.html" class="tile">
+                    <img src="/placeholder.svg?height=250&width=250" alt="Sustainable Agriculture">
+                    <div class="tile-content">
+                        <h3>Sustainable Agriculture</h3>
+                        <p>Discover practices for environmentally friendly farming</p>
+                    </div>
+                </a>
+                <a href="content_ST3.html" class="tile">
+                    <img src="/placeholder.svg?height=250&width=250" alt="Nutrition">
+                    <div class="tile-content">
+                        <h3>Nutrition</h3>
+                        <p>Explore the importance of balanced nutrition for all</p>
+                    </div>
+                </a>
+                <a href="content_ST4.html" class="tile">
+                    <img src="/placeholder.svg?height=250&width=250" alt="Food Waste">
+                    <div class="tile-content">
+                        <h3>Food Waste</h3>
+                        <p>Learn how to reduce food waste and its impact</p>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Zero Hunger Initiative</h3>
+                    <p>Working together to achieve SDG 2: Zero Hunger by 2030.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="table.html">Programs</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Page Editors</h3>
+                    <ul>
+                        <li><a href="pageEditor_ST1.html">Yusuke</a></li>
+                        <li><a href="pageEditor_ST2.html">Aarnav</a></li>
+                        <li><a href="pageEditor_ST3.html">Pranav</a></li>
+                        <li><a href="pageEditor_ST4.html">Ayur</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Zero Hunger Initiative. All rights reserved.</p>
+                <p>This page is maintained by <a href="pageEditor_ST2.html">Student 2</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

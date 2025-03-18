@@ -1,0 +1,556 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero Hunger Initiative - Nutrition Education</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      .content-header {
+          background: url('/placeholder.svg?height=600&width=1200') center/cover no-repeat;
+          background-color: rgba(0, 0, 0, 0.6);
+          background-blend-mode: overlay;
+          color: white;
+          padding: 3rem 0;
+          text-align: center;
+          margin-bottom: 2rem;
+      }
+      
+      .content-container {
+          max-width: 1000px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
+      
+      .content-nav {
+          background-color: white;
+          border-radius: 8px;
+          padding: 1.5rem;
+          margin-bottom: 2rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .content-nav-title {
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+          color: var(--primary-dark);
+          border-bottom: 2px solid var(--primary-light);
+          padding-bottom: 0.5rem;
+      }
+      
+      .content-nav-list {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+      }
+      
+      .content-nav-list li a {
+          display: block;
+          padding: 0.5rem 1rem;
+          background-color: var(--neutral-200);
+          border-radius: 4px;
+          transition: all 0.3s ease;
+      }
+      
+      .content-nav-list li a:hover {
+          background-color: var(--primary-light);
+          text-decoration: none;
+      }
+      
+      .content-section {
+          background-color: white;
+          border-radius: 8px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .section-header {
+          margin-bottom: 1.5rem;
+      }
+      
+      .section-title {
+          color: var(--primary-dark);
+          margin-bottom: 1rem;
+      }
+      
+      .nutrition-card {
+          display: flex;
+          gap: 2rem;
+          margin-bottom: 2rem;
+      }
+      
+      .nutrition-image {
+          flex: 0 0 300px;
+      }
+      
+      .nutrition-image img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+      }
+      
+      .nutrition-content {
+          flex: 1;
+      }
+      
+      .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1.5rem;
+          margin: 2rem 0;
+      }
+      
+      .stat-card {
+          background-color: var(--neutral-200);
+          padding: 1.5rem;
+          border-radius: 8px;
+          text-align: center;
+      }
+      
+      .stat-number {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: var(--primary);
+          margin-bottom: 0.5rem;
+      }
+      
+      .resources-list {
+          list-style: none;
+          padding: 0;
+      }
+      
+      .resources-list li {
+          margin-bottom: 1rem;
+          padding-left: 1.5rem;
+          position: relative;
+      }
+      
+      .resources-list li::before {
+          content: "→";
+          position: absolute;
+          left: 0;
+          color: var(--primary);
+      }
+      
+      .go-to-top {
+          position: fixed;
+          bottom: 2rem;
+          right: 2rem;
+          background-color: var(--primary);
+          color: var(--neutral-900);
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.5rem;
+          box-shadow: var(--box-shadow);
+          transition: all 0.3s ease;
+          z-index: 99;
+      }
+      
+      .go-to-top:hover {
+          background-color: var(--primary-dark);
+          color: var(--neutral-100);
+      }
+      
+      .food-group-container {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 1.5rem;
+          margin: 2rem 0;
+      }
+      
+      .food-group {
+          background-color: var(--neutral-200);
+          border-radius: 8px;
+          padding: 1.5rem;
+          text-align: center;
+          transition: transform 0.3s ease;
+      }
+      
+      .food-group:hover {
+          transform: translateY(-5px);
+      }
+      
+      .food-group-icon {
+          font-size: 2.5rem;
+          margin-bottom: 1rem;
+      }
+      
+      .food-group h3 {
+          margin-bottom: 1rem;
+          color: var(--primary-dark);
+      }
+      
+      .interactive-element {
+          background-color: var(--neutral-200);
+          border-radius: 8px;
+          padding: 1.5rem;
+          margin: 2rem 0;
+      }
+      
+      .interactive-element h3 {
+          margin-bottom: 1rem;
+          color: var(--primary-dark);
+      }
+      
+      .meal-planner {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1rem;
+          margin-top: 1.5rem;
+      }
+      
+      .meal-card {
+          background-color: white;
+          border-radius: 8px;
+          padding: 1rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .meal-card h4 {
+          margin-bottom: 0.5rem;
+          color: var(--primary);
+      }
+      
+      .meal-card ul {
+          padding-left: 1.5rem;
+      }
+  </style>
+</head>
+<body>
+  <header>
+      <div class="container header-content">
+          <div class="logo">
+              <img src="/placeholder.svg?height=80&width=80" alt="Zero Hunger Initiative Logo">
+              <h1 class="site-title">Zero Hunger Initiative</h1>
+          </div>
+      </div>
+      <nav>
+          <div class="container nav-container">
+              <ul class="nav-list">
+                  <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+                  <li class="nav-item"><a href="volunteer.html" class="nav-link">Volunteer</a></li>
+                  <li class="nav-item"><a href="table.html" class="nav-link">Statistics</a></li>
+                  <li class="nav-item"><a href="profile.html" class="nav-link">User Profile</a></li>
+                  <li class="nav-item"><a href="feedback.html" class="nav-link">Feedback</a></li>
+                  <li class="nav-item"><a href="sitemap.html" class="nav-link">Sitemap</a></li>
+                  <li class="nav-item"><a href="team.html" class="nav-link">Our Team</a></li>
+              </ul>
+          </div>
+      </nav>
+  </header>
+
+  <main>
+      <section class="content-header">
+          <div class="container">
+              <h1>Nutrition Education</h1>
+              <p>Empowering communities with knowledge for better health and food security</p>
+          </div>
+      </section>
+      
+      <div class="content-container">
+          <div class="content-nav" id="top">
+              <h2 class="content-nav-title">Quick Navigation</h2>
+              <ul class="content-nav-list">
+                  <li><a href="#importance">Importance of Nutrition</a></li>
+                  <li><a href="#food-groups">Essential Food Groups</a></li>
+                  <li><a href="#meal-planning">Meal Planning</a></li>
+                  <li><a href="#education-programs">Education Programs</a></li>
+                  <li><a href="#resources">Resources</a></li>
+              </ul>
+          </div>
+          
+          <section id="importance" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">The Importance of Nutrition Education</h2>
+              </div>
+              
+              <div class="nutrition-card">
+                  <div class="nutrition-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Diverse group of people learning about nutrition">
+                  </div>
+                  <div class="nutrition-content">
+                      <p>Nutrition education is a critical component in addressing hunger and food insecurity worldwide. By teaching individuals and communities about proper nutrition, we empower them to make healthier food choices, maximize the nutritional value of available resources, and improve overall health outcomes.</p>
+                      
+                      <p>Proper nutrition is essential not only for physical health but also for cognitive development, academic performance, and economic productivity. When people understand the importance of balanced nutrition, they can make informed decisions that benefit themselves, their families, and their communities.</p>
+                      
+                      <h3>Key Benefits of Nutrition Education:</h3>
+                      <ul>
+                          <li>Improved dietary choices and eating habits</li>
+                          <li>Better utilization of available food resources</li>
+                          <li>Reduced risk of malnutrition and diet-related diseases</li>
+                          <li>Enhanced maternal and child health outcomes</li>
+                          <li>Increased food security through informed decision-making</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="stats-grid">
+                  <div class="stat-card">
+                      <div class="stat-number">3B</div>
+                      <p>People cannot afford a healthy diet</p>
+                  </div>
+                  <div class="stat-card">
+                      <div class="stat-number">45%</div>
+                      <p>Of child deaths linked to undernutrition</p>
+                  </div>
+                  <div class="stat-card">
+                      <div class="stat-number">2B</div>
+                      <p>People affected by micronutrient deficiencies</p>
+                  </div>
+                  <div class="stat-card">
+                      <div class="stat-number">40%</div>
+                      <p>Increase in healthy eating with nutrition education</p>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="food-groups" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Essential Food Groups</h2>
+              </div>
+              
+              <p>Understanding the basic food groups and their nutritional benefits is fundamental to making healthy dietary choices. A balanced diet should include a variety of foods from each group to ensure adequate intake of essential nutrients.</p>
+              
+              <div class="food-group-container">
+                  <div class="food-group">
+                      <div class="food-group-icon">🌾</div>
+                      <h3>Grains</h3>
+                      <p>Provide energy through carbohydrates and contain important B vitamins, minerals, and fiber.</p>
+                      <p><strong>Examples:</strong> Rice, wheat, corn, oats, barley, millet</p>
+                  </div>
+                  
+                  <div class="food-group">
+                      <div class="food-group-icon">🥦</div>
+                      <h3>Vegetables</h3>
+                      <p>Rich in vitamins, minerals, antioxidants, and fiber that support overall health.</p>
+                      <p><strong>Examples:</strong> Leafy greens, carrots, peppers, tomatoes, eggplant</p>
+                  </div>
+                  
+                  <div class="food-group">
+                      <div class="food-group-icon">🍎</div>
+                      <h3>Fruits</h3>
+                      <p>Contain essential vitamins, minerals, and natural sugars that provide energy.</p>
+                      <p><strong>Examples:</strong> Apples, bananas, oranges, berries, mangoes</p>
+                  </div>
+                  
+                  <div class="food-group">
+                      <div class="food-group-icon">🥛</div>
+                      <h3>Dairy</h3>
+                      <p>Important source of calcium, protein, and vitamins for bone health.</p>
+                      <p><strong>Examples:</strong> Milk, yogurt, cheese, fortified plant-based alternatives</p>
+                  </div>
+                  
+                  <div class="food-group">
+                      <div class="food-group-icon">🍗</div>
+                      <h3>Protein Foods</h3>
+                      <p>Essential for building and repairing body tissues and supporting immune function.</p>
+                      <p><strong>Examples:</strong> Meat, poultry, fish, eggs, beans, nuts, seeds</p>
+                  </div>
+                  
+                  <div class="food-group">
+                      <div class="food-group-icon">🥑</div>
+                      <h3>Healthy Fats</h3>
+                      <p>Provide essential fatty acids and help with vitamin absorption.</p>
+                      <p><strong>Examples:</strong> Avocados, olive oil, nuts, seeds</p>
+                  </div>
+              </div>
+              
+              <p>The proportions of each food group may vary based on cultural preferences, local availability, and individual nutritional needs. However, the principle of diversity within and across food groups remains essential for optimal nutrition.</p>
+          </section>
+          
+          <section id="meal-planning" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Nutritious Meal Planning on a Budget</h2>
+              </div>
+              
+              <div class="nutrition-card">
+                  <div class="nutrition-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Family preparing a nutritious meal together">
+                  </div>
+                  <div class="nutrition-content">
+                      <p>Planning nutritious meals on a limited budget is a crucial skill for food security. With strategic planning, even households with constrained resources can maximize nutrition while minimizing costs.</p>
+                      
+                      <h3>Key Strategies:</h3>
+                      <ul>
+                          <li><strong>Plan meals in advance</strong> to reduce food waste and impulse purchases</li>
+                          <li><strong>Buy seasonal produce</strong> when it's most affordable and nutritious</li>
+                          <li><strong>Incorporate plant-based proteins</strong> like beans and lentils, which are typically less expensive than animal proteins</li>
+                          <li><strong>Buy in bulk</strong> when possible for staple items with long shelf lives</li>
+                          <li><strong>Learn simple preservation techniques</strong> to extend the life of fresh foods</li>
+                          <li><strong>Cook from scratch</strong> rather than purchasing processed foods</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="interactive-element">
+                  <h3>Sample Weekly Meal Plan</h3>
+                  <p>Here's an example of a nutritious weekly meal plan that's economical and uses ingredients efficiently:</p>
+                  
+                  <div class="meal-planner">
+                      <div class="meal-card">
+                          <h4>Monday</h4>
+                          <ul>
+                              <li><strong>Breakfast:</strong> Oatmeal with fruit</li>
+                              <li><strong>Lunch:</strong> Bean and vegetable soup</li>
+                              <li><strong>Dinner:</strong> Rice with lentil curry</li>
+                          </ul>
+                      </div>
+                      
+                      <div class="meal-card">
+                          <h4>Tuesday</h4>
+                          <ul>
+                              <li><strong>Breakfast:</strong> Whole grain toast with egg</li>
+                              <li><strong>Lunch:</strong> Leftover soup with bread</li>
+                              <li><strong>Dinner:</strong> Vegetable stir-fry with rice</li>
+                          </ul>
+                      </div>
+                      
+                      <div class="meal-card">
+                          <h4>Wednesday</h4>
+                          <ul>
+                              <li><strong>Breakfast:</strong> Yogurt with fruit and nuts</li>
+                              <li><strong>Lunch:</strong> Vegetable wrap with hummus</li>
+                              <li><strong>Dinner:</strong> Bean and vegetable tacos</li>
+                          </ul>
+                      </div>
+                      
+                      <div class="meal-card">
+                          <h4>Thursday</h4>
+                          <ul>
+                              <li><strong>Breakfast:</strong> Fruit smoothie with oats</li>
+                              <li><strong>Lunch:</strong> Leftover tacos</li>
+                              <li><strong>Dinner:</strong> Pasta with vegetable sauce</li>
+                          </ul>
+                      </div>
+                      
+                      <div class="meal-card">
+                          <h4>Friday</h4>
+                          <ul>
+                              <li><strong>Breakfast:</strong> Whole grain cereal with milk</li>
+                              <li><strong>Lunch:</strong> Leftover pasta</li>
+                              <li><strong>Dinner:</strong> Vegetable and egg fried rice</li>
+                          </ul>
+                      </div>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="education-programs" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Our Nutrition Education Programs</h2>
+              </div>
+              
+              <p>The Zero Hunger Initiative offers various nutrition education programs designed to meet the needs of different communities and age groups. These programs combine practical skills with nutritional knowledge to create sustainable behavior change.</p>
+              
+              <div class="nutrition-card">
+                  <div class="nutrition-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Children learning about nutrition in a classroom">
+                  </div>
+                  <div class="nutrition-content">
+                      <h3>School-Based Nutrition Education</h3>
+                      <p>Our school programs integrate nutrition education into existing curricula, making it relevant and engaging for students of all ages. Through hands-on activities, garden projects, and cooking demonstrations, children learn about the importance of healthy eating habits from an early age.</p>
+                      
+                      <h4>Program Components:</h4>
+                      <ul>
+                          <li>Age-appropriate nutrition lessons</li>
+                          <li>School garden initiatives</li>
+                          <li>Cooking classes using simple, affordable ingredients</li>
+                          <li>Parent engagement activities</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="nutrition-card">
+                  <div class="nutrition-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Community cooking workshop">
+                  </div>
+                  <div class="nutrition-content">
+                      <h3>Community Cooking Workshops</h3>
+                      <p>These workshops bring community members together to learn practical cooking skills that maximize nutrition while respecting cultural food traditions. Participants learn to prepare balanced meals using locally available, affordable ingredients.</p>
+                      
+                      <h4>Workshop Focus Areas:</h4>
+                      <ul>
+                          <li>Nutritious meal preparation on a budget</li>
+                          <li>Food preservation techniques</li>
+                          <li>Adapting traditional recipes for improved nutrition</li>
+                          <li>Safe food handling and storage</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="nutrition-card">
+                  <div class="nutrition-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Healthcare provider discussing nutrition with a mother and child">
+                  </div>
+                  <div class="nutrition-content">
+                      <h3>Maternal and Child Nutrition Program</h3>
+                      <p>This program focuses on the critical first 1,000 days of life—from pregnancy through a child's second birthday—when proper nutrition has the most significant impact on long-term health and development.</p>
+                      
+                      <h4>Program Elements:</h4>
+                      <ul>
+                          <li>Prenatal nutrition counseling</li>
+                          <li>Breastfeeding support and education</li>
+                          <li>Complementary feeding guidance</li>
+                          <li>Growth monitoring and promotion</li>
+                      </ul>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="resources" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Nutrition Resources</h2>
+              </div>
+              
+              <p>We offer a variety of resources to support nutrition education and healthy eating practices:</p>
+              
+              <ul class="resources-list">
+                  <li><a href="#">Nutrition Education Curriculum</a> - Comprehensive teaching materials for educators and community leaders</li>
+                  <li><a href="#">Budget-Friendly Recipe Collection</a> - Nutritious recipes using affordable, widely available ingredients</li>
+                  <li><a href="#">Food Group Guide</a> - Detailed information about essential nutrients and their food sources</li>
+                  <li><a href="#">Meal Planning Templates</a> - Tools to help families plan balanced meals on a budget</li>
+                  <li><a href="#">Seasonal Food Guides</a> - Information on when different foods are most affordable and nutritious</li>
+                  <li><a href="#">Nutrition Myth Busters</a> - Evidence-based information to address common nutrition misconceptions</li>
+              </ul>
+          </section>
+          
+          <a href="#top" class="go-to-top" aria-label="Go to top of page">↑</a>
+      </div>
+  </main>
+
+  <footer>
+      <div class="container footer-content">
+          <div class="footer-section">
+              <h4>About Us</h4>
+              <p>We are dedicated to supporting UN SDG #2: Zero Hunger through education, advocacy, and action.</p>
+          </div>
+          <div class="footer-section">
+              <h4>Quick Links</h4>
+              <a href="home.html" class="footer-link">Home</a>
+              <a href="volunteer.html" class="footer-link">Volunteer</a>
+              <a href="feedback.html" class="footer-link">Feedback</a>
+              <a href="sitemap.html" class="footer-link">Sitemap</a>
+          </div>
+          <div class="footer-section">
+              <h4>Page Editors</h4>
+              <a href="pageEditor_ST1.html" class="footer-link">Student 1's Page</a>
+              <a href="pageEditor_ST2.html" class="footer-link">Student 2's Page</a>
+              <a href="pageEditor_ST3.html" class="footer-link">Student 3's Page</a>
+              <a href="pageEditor_ST4.html" class="footer-link">Student 4's Page</a>
+          </div>
+      </div>
+      <div class="copyright">
+          <p>&copy; 2025 Zero Hunger Initiative. All rights reserved.</p>
+          <p>This website meets accessibility standards. <a href="validation_ST3.html">Validation</a></p>
+      </div>
+  </footer>
+</body>
+</html>
+

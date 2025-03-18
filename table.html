@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Programs - Zero Hunger Initiative</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .table-header {
+            background-color: var(--primary-light);
+            padding: 2rem 0;
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .table-container {
+            background-color: var(--neutral-100);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow-x: auto;
+        }
+
+        .programs-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .programs-table th {
+            background-color: var(--primary);
+            color: var(--neutral-900);
+            padding: 1rem;
+            text-align: left;
+            position: relative;
+        }
+
+        .programs-table th img {
+            width: 30px;
+            height: 30px;
+            margin-right: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .programs-table th:hover::after {
+            content: attr(data-tooltip);
+            position: absolute;
+            top: -40px;
+            left: 0;
+            background-color: var(--neutral-800);
+            color: var(--neutral-100);
+            padding: 0.5rem;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .programs-table tr:nth-child(even) {
+            background-color: var(--neutral-200);
+        }
+
+        .programs-table tr:hover {
+            background-color: var(--primary-light);
+        }
+
+        .programs-table td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--neutral-300);
+        }
+
+        .programs-table td.highlight {
+            background-color: rgba(229, 183, 0, 0.1);
+        }
+
+        .programs-table .logo-cell {
+            text-align: center;
+        }
+
+        .programs-table .logo-cell img {
+            width: 80px;
+            height: auto;
+        }
+
+        .check-icon {
+            color: var(--success);
+            font-size: 1.25rem;
+        }
+
+        .cross-icon {
+            color: var(--error);
+            font-size: 1.25rem;
+        }
+
+        .program-link {
+            color: var(--secondary);
+            text-decoration: underline;
+        }
+
+        .program-link:hover {
+            color: var(--primary);
+        }
+
+        .table-footer {
+            margin-top: 1rem;
+            font-size: 0.875rem;
+            color: var(--neutral-600);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/placeholder.svg?height=50&width=50" alt="Zero Hunger Logo">
+                    <h1>Zero Hunger Initiative</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="table.html" class="active">Programs</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="sitemap.html">Sitemap</a></li>
+                        <li><a href="team.html">Team</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="table-header">
+            <div class="container">
+                <h1>Zero Hunger Programs Comparison</h1>
+                <p>Compare our various programs and initiatives to find the best fit for your interests and skills.</p>
+            </div>
+        </div>
+
+        <div class="container">
+            <div class="table-container">
+                <table class="programs-table">
+                    <thead>
+                        <tr>
+                            <th rowspan="2" class="logo-cell">
+                                <img src="/placeholder.svg?height=80&width=80" alt="Zero Hunger Logo">
+                            </th>
+                            <th data-tooltip="Programs focused on growing food locally">
+                                <img src="/placeholder.svg?height=30&width=30" alt="Agriculture Icon"> Agriculture
+                            </th>
+                            <th data-tooltip="Programs focused on distributing food to those in need">
+                                <img src="/placeholder.svg?height=30&width=30" alt="Distribution Icon"> Distribution
+                            </th>
+                            <th data-tooltip="Programs focused on teaching about nutrition and cooking">
+                                <img src="/placeholder.svg?height=30&width=30" alt="Education Icon"> Education
+                            </th>
+                            <th data-tooltip="Programs focused on policy and advocacy work">
+                                <img src="/placeholder.svg?height=30&width=30" alt="Advocacy Icon"> Advocacy
+                            </th>
+                        </tr>
+                        <tr>
+                            <th>Availability</th>
+                            <th>Locations</th>
+                            <th>Duration</th>
+                            <th>Requirements</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><a href="#" class="program-link">Community Garden Initiative</a></td>
+                            <td class="highlight"><span class="check-icon">✓</span> Year-round</td>
+                            <td>Urban Areas</td>
+                            <td>5-10 hrs/week</td>
+                            <td>None</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="program-link">Food Bank Assistant</a></td>
+                            <td><span class="cross-icon">✗</span> Seasonal</td>
+                            <td class="highlight">Nationwide</td>
+                            <td>Flexible</td>
+                            <td>18+ years</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="program-link">Nutrition Education</a></td>
+                            <td><span class="check-icon">✓</span> Year-round</td>
+                            <td>Schools</td>
+                            <td class="highlight">3-5 hrs/week</td>
+                            <td>Background Check</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="program-link">Sustainable Farming</a></td>
+                            <td class="highlight"><span class="check-icon">✓</span> Seasonal</td>
+                            <td>Rural Areas</td>
+                            <td>1-3 months</td>
+                            <td>Physical Ability</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="program-link">Food Rescue</a></td>
+                            <td><span class="check-icon">✓</span> Year-round</td>
+                            <td class="highlight">Urban & Suburban</td>
+                            <td>4-8 hrs/week</td>
+                            <td>Driver's License</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="program-link">Policy Advocacy</a></td>
+                            <td><span class="cross-icon">✗</span> Project-based</td>
+                            <td>Remote</td>
+                            <td>10-15 hrs/week</td>
+                            <td class="highlight">Research Skills</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="program-link">School Garden Program</a></td>
+                            <td class="highlight"><span class="check-icon">✓</span> School Year</td>
+                            <td>Schools</td>
+                            <td>2-4 hrs/week</td>
+                            <td>Background Check</td>
+                        </tr>
+                        <tr>
+                            <td><a href="#" class="program-link">International Relief</a></td>
+                            <td><span class="cross-icon">✗</span> As Needed</td>
+                            <td class="highlight">Global</td>
+                            <td>2+ weeks</td>
+                            <td>Passport, Training</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="table-footer">
+                    <p>Note: Program availability and requirements may change. Please contact us for the most up-to-date information.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Zero Hunger Initiative</h3>
+                    <p>Working together to achieve SDG 2: Zero Hunger by 2030.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="table.html">Programs</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Page Editors</h3>
+                    <ul>
+                        <li><a href="pageEditor_ST1.html">Student 1</a></li>
+                        <li><a href="pageEditor_ST2.html">Student 2</a></li>
+                        <li><a href="pageEditor_ST3.html">Student 3</a></li>
+                        <li><a href="pageEditor_ST4.html">Student 4</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Zero Hunger Initiative. All rights reserved.</p>
+                <p>This page is maintained by <a href="pageEditor_ST2.html">Student 2</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

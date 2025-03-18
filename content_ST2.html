@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero Hunger Initiative - Sustainable Agriculture</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      .content-header {
+          background: url('/placeholder.svg?height=600&width=1200') center/cover no-repeat;
+          background-color: rgba(0, 0, 0, 0.6);
+          background-blend-mode: overlay;
+          color: white;
+          padding: 3rem 0;
+          text-align: center;
+          margin-bottom: 2rem;
+      }
+      
+      .content-container {
+          max-width: 1000px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
+      
+      .content-nav {
+          background-color: white;
+          border-radius: 8px;
+          padding: 1.5rem;
+          margin-bottom: 2rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .content-nav-title {
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+          color: var(--primary-dark);
+          border-bottom: 2px solid var(--primary-light);
+          padding-bottom: 0.5rem;
+      }
+      
+      .content-nav-list {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+      }
+      
+      .content-nav-list li a {
+          display: block;
+          padding: 0.5rem 1rem;
+          background-color: var(--neutral-200);
+          border-radius: 4px;
+          transition: all 0.3s ease;
+      }
+      
+      .content-nav-list li a:hover {
+          background-color: var(--primary-light);
+          text-decoration: none;
+      }
+      
+      .content-section {
+          background-color: white;
+          border-radius: 8px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .section-header {
+          margin-bottom: 1.5rem;
+      }
+      
+      .section-title {
+          color: var(--primary-dark);
+          margin-bottom: 1rem;
+      }
+      
+      .practice-card {
+          display: flex;
+          gap: 2rem;
+          margin-bottom: 2rem;
+      }
+      
+      .practice-image {
+          flex: 0 0 300px;
+      }
+      
+      .practice-image img {
+          width: 100%;
+          height: auto;
+          border-radius: 8px;
+      }
+      
+      .practice-content {
+          flex: 1;
+      }
+      
+      .stats-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+          gap: 1.5rem;
+          margin: 2rem 0;
+      }
+      
+      .stat-card {
+          background-color: var(--neutral-200);
+          padding: 1.5rem;
+          border-radius: 8px;
+          text-align: center;
+      }
+      
+      .stat-number {
+          font-size: 2.5rem;
+          font-weight: 700;
+          color: var(--primary);
+          margin-bottom: 0.5rem;
+      }
+      
+      .resources-list {
+          list-style: none;
+          padding: 0;
+      }
+      
+      .resources-list li {
+          margin-bottom: 1rem;
+          padding-left: 1.5rem;
+          position: relative;
+      }
+      
+      .resources-list li::before {
+          content: "→";
+          position: absolute;
+          left: 0;
+          color: var(--primary);
+      }
+      
+      .go-to-top {
+          position: fixed;
+          bottom: 2rem;
+          right: 2rem;
+          background-color: var(--primary);
+          color: var(--neutral-900);
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.5rem;
+          box-shadow: var(--box-shadow);
+          transition: all 0.3s ease;
+          z-index: 99;
+      }
+      
+      .go-to-top:hover {
+          background-color: var(--primary-dark);
+          color: var(--neutral-100);
+      }
+      
+      .comparison-table {
+          width: 100%;
+          border-collapse: collapse;
+          margin: 2rem 0;
+      }
+      
+      .comparison-table th,
+      .comparison-table td {
+          padding: 1rem;
+          text-align: left;
+          border: 1px solid var(--neutral-300);
+      }
+      
+      .comparison-table th {
+          background-color: var(--primary-light);
+      }
+      
+      .comparison-table tr:nth-child(even) {
+          background-color: var(--neutral-200);
+      }
+      
+      .benefit-icon {
+          color: var(--secondary);
+          font-weight: bold;
+      }
+  </style>
+</head>
+<body>
+  <header>
+      <div class="container header-content">
+          <div class="logo">
+              <img src="/placeholder.svg?height=80&width=80" alt="Zero Hunger Initiative Logo">
+              <h1 class="site-title">Zero Hunger Initiative</h1>
+          </div>
+      </div>
+      <nav>
+          <div class="container nav-container">
+              <ul class="nav-list">
+                  <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+                  <li class="nav-item"><a href="volunteer.html" class="nav-link">Volunteer</a></li>
+                  <li class="nav-item"><a href="table.html" class="nav-link">Statistics</a></li>
+                  <li class="nav-item"><a href="profile.html" class="nav-link">User Profile</a></li>
+                  <li class="nav-item"><a href="feedback.html" class="nav-link">Feedback</a></li>
+                  <li class="nav-item"><a href="sitemap.html" class="nav-link">Sitemap</a></li>
+                  <li class="nav-item"><a href="team.html" class="nav-link">Our Team</a></li>
+              </ul>
+          </div>
+      </nav>
+  </header>
+
+  <main>
+      <section class="content-header">
+          <div class="container">
+              <h1>Sustainable Agriculture</h1>
+              <p>Innovative farming practices that ensure food security while protecting the environment</p>
+          </div>
+      </section>
+      
+      <div class="content-container">
+          <div class="content-nav" id="top">
+              <h2 class="content-nav-title">Quick Navigation</h2>
+              <ul class="content-nav-list">
+                  <li><a href="#introduction">Introduction</a></li>
+                  <li><a href="#key-practices">Key Practices</a></li>
+                  <li><a href="#benefits">Benefits</a></li>
+                  <li><a href="#case-studies">Case Studies</a></li>
+                  <li><a href="#implementation">Implementation</a></li>
+                  <li><a href="#resources">Resources</a></li>
+              </ul>
+          </div>
+          
+          <section id="introduction" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Introduction to Sustainable Agriculture</h2>
+              </div>
+              
+              <p>Sustainable agriculture refers to farming practices that meet society's current food needs without compromising the ability of future generations to meet their own needs. It integrates three main objectives: environmental health, economic profitability, and social equity.</p>
+              
+              <p>As global population continues to grow and climate change intensifies, sustainable agriculture becomes increasingly critical for ensuring food security while minimizing environmental impact. These practices help maintain soil productivity, conserve water, reduce dependence on non-renewable resources, and minimize adverse impacts on the environment.</p>
+              
+              <div class="stats-grid">
+                  <div class="stat-card">
+                      <div class="stat-number">9.7B</div>
+                      <p>Projected global population by 2050</p>
+                  </div>
+                  <div class="stat-card">
+                      <div class="stat-number">+50%</div>
+                      <p>Increase in food production needed by 2050</p>
+                  </div>
+                  <div class="stat-card">
+                      <div class="stat-number">70%</div>
+                      <p>Of global freshwater used for agriculture</p>
+                  </div>
+                  <div class="stat-card">
+                      <div class="stat-number">33%</div>
+                      <p>Of world's soil is moderately to highly degraded</p>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="key-practices" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Key Sustainable Agriculture Practices</h2>
+              </div>
+              
+              <div class="practice-card">
+                  <div class="practice-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Crop rotation with different plants in sequential seasons">
+                  </div>
+                  <div class="practice-content">
+                      <h3>Crop Rotation</h3>
+                      <p>Crop rotation involves changing the type of crops grown in a particular area in sequential seasons. This practice helps manage soil fertility, reduce soil erosion, and control pests and diseases naturally.</p>
+                      
+                      <h4>Benefits:</h4>
+                      <ul>
+                          <li>Improves soil structure and fertility</li>
+                          <li>Reduces dependency on synthetic fertilizers</li>
+                          <li>Disrupts pest and disease cycles</li>
+                          <li>Increases biodiversity</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="practice-card">
+                  <div class="practice-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Agroforestry system with trees integrated with crops">
+                  </div>
+                  <div class="practice-content">
+                      <h3>Agroforestry</h3>
+                      <p>Agroforestry integrates trees with crop production and/or livestock. This approach mimics natural ecosystems and creates beneficial interactions between different components of the agricultural system.</p>
+                      
+                      <h4>Benefits:</h4>
+                      <ul>
+                          <li>Provides multiple income sources for farmers</li>
+                          <li>Improves soil health through increased organic matter</li>
+                          <li>Creates wildlife habitat and increases biodiversity</li>
+                          <li>Sequesters carbon and mitigates climate change</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="practice-card">
+                  <div class="practice-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Water-efficient drip irrigation system">
+                  </div>
+                  <div class="practice-content">
+                      <h3>Water Conservation Techniques</h3>
+                      <p>Efficient water management is crucial for sustainable agriculture. Techniques include drip irrigation, rainwater harvesting, and precision irrigation scheduling based on crop needs and soil moisture levels.</p>
+                      
+                      <h4>Benefits:</h4>
+                      <ul>
+                          <li>Reduces water usage by up to 60% compared to conventional methods</li>
+                          <li>Minimizes runoff and soil erosion</li>
+                          <li>Decreases energy consumption for water pumping</li>
+                          <li>Improves crop yield and quality through optimal water delivery</li>
+                      </ul>
+                  </div>
+              </div>
+              
+              <div class="practice-card">
+                  <div class="practice-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Integrated pest management with beneficial insects">
+                  </div>
+                  <div class="practice-content">
+                      <h3>Integrated Pest Management (IPM)</h3>
+                      <p>IPM is an ecosystem-based approach that combines different pest management techniques to minimize economic, health, and environmental risks. It focuses on long-term prevention through biological controls, habitat manipulation, and resistant crop varieties.</p>
+                      
+                      <h4>Benefits:</h4>
+                      <ul>
+                          <li>Reduces reliance on chemical pesticides</li>
+                          <li>Preserves beneficial insects and natural predators</li>
+                          <li>Minimizes pesticide resistance development</li>
+                          <li>Reduces environmental contamination and health risks</li>
+                      </ul>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="benefits" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Benefits of Sustainable Agriculture</h2>
+              </div>
+              
+              <p>Sustainable agriculture offers numerous benefits across environmental, economic, and social dimensions:</p>
+              
+              <table class="comparison-table">
+                  <thead>
+                      <tr>
+                          <th>Dimension</th>
+                          <th>Benefits</th>
+                          <th>Impact on Zero Hunger Goals</th>
+                      </tr>
+                  </thead>
+                  <tbody>
+                      <tr>
+                          <td><strong>Environmental</strong></td>
+                          <td>
+                              <ul>
+                                  <li><span class="benefit-icon">✓</span> Soil conservation and improved health</li>
+                                  <li><span class="benefit-icon">✓</span> Water conservation and quality protection</li>
+                                  <li><span class="benefit-icon">✓</span> Biodiversity preservation</li>
+                                  <li><span class="benefit-icon">✓</span> Climate change mitigation</li>
+                              </ul>
+                          </td>
+                          <td>Ensures long-term productivity of agricultural lands, maintaining food production capacity for future generations</td>
+                      </tr>
+                      <tr>
+                          <td><strong>Economic</strong></td>
+                          <td>
+                              <ul>
+                                  <li><span class="benefit-icon">✓</span> Reduced input costs</li>
+                                  <li><span class="benefit-icon">✓</span> Diversified income streams</li>
+                                  <li><span class="benefit-icon">✓</span> Premium prices for sustainable products</li>
+                                  <li><span class="benefit-icon">✓</span> Improved resilience to market fluctuations</li>
+                              </ul>
+                          </td>
+                          <td>Improves farmer livelihoods and economic stability, enabling consistent food production and distribution</td>
+                      </tr>
+                      <tr>
+                          <td><strong>Social</strong></td>
+                          <td>
+                              <ul>
+                                  <li><span class="benefit-icon">✓</span> Improved food security and nutrition</li>
+                                  <li><span class="benefit-icon">✓</span> Healthier farm worker conditions</li>
+                                  <li><span class="benefit-icon">✓</span> Preservation of rural communities</li>
+                                  <li><span class="benefit-icon">✓</span> Knowledge preservation and sharing</li>
+                              </ul>
+                          </td>
+                          <td>Creates equitable food systems that ensure access to nutritious food for all community members</td>
+                      </tr>
+                  </tbody>
+              </table>
+          </section>
+          
+          <section id="case-studies" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Case Studies: Success Stories</h2>
+              </div>
+              
+              <div class="practice-card">
+                  <div class="practice-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Smallholder farmers in East Africa">
+                  </div>
+                  <div class="practice-content">
+                      <h3>East Africa: Climate-Smart Villages</h3>
+                      <p>In Kenya, Tanzania, and Ethiopia, the Climate-Smart Villages approach has helped smallholder farmers adapt to climate change while improving food security. By implementing a combination of sustainable practices tailored to local conditions, participating communities have seen:</p>
+                      
+                      <ul>
+                          <li>30-50% increase in crop yields</li>
+                          <li>40% reduction in water usage</li>
+                          <li>Significant improvement in household nutrition</li>
+                          <li>Greater resilience to climate shocks like drought</li>
+                      </ul>
+                      
+                      <p>The program's success lies in its community-led approach, combining traditional knowledge with modern sustainable techniques.</p>
+                  </div>
+              </div>
+              
+              <div class="practice-card">
+                  <div class="practice-image">
+                      <img src="/placeholder.svg?height=300&width=500" alt="Rice-fish farming system in Southeast Asia">
+                  </div>
+                  <div class="practice-content">
+                      <h3>Southeast Asia: Integrated Rice-Fish Systems</h3>
+                      <p>In Vietnam, Indonesia, and Thailand, farmers have revitalized traditional integrated rice-fish farming systems with modern sustainable approaches. These systems:</p>
+                      
+                      <ul>
+                          <li>Produce both grain and protein from the same land area</li>
+                          <li>Reduce pesticide use by 68% as fish consume pests</li>
+                          <li>Increase farm income by 40-60% compared to rice monoculture</li>
+                          <li>Improve rice yields by 5-15% due to fish fertilization and pest control</li>
+                      </ul>
+                      
+                      <p>This integrated approach demonstrates how traditional knowledge can be combined with modern techniques to create highly productive, sustainable food systems.</p>
+                  </div>
+              </div>
+          </section>
+          
+          <section id="implementation" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Implementation Strategies</h2>
+              </div>
+              
+              <p>Transitioning to sustainable agriculture requires a thoughtful approach that considers local conditions, available resources, and farmer needs. Here are key strategies for successful implementation:</p>
+              
+              <h3>For Smallholder Farmers</h3>
+              <ul>
+                  <li><strong>Start small:</strong> Begin with one or two sustainable practices on a portion of land</li>
+                  <li><strong>Form farmer groups:</strong> Share knowledge, resources, and equipment</li>
+                  <li><strong>Leverage indigenous knowledge:</strong> Combine traditional practices with modern sustainable techniques</li>
+                  <li><strong>Diversify crops:</strong> Reduce risk and improve nutrition and income stability</li>
+              </ul>
+              
+              <h3>For Larger Agricultural Operations</h3>
+              <ul>
+                  <li><strong>Develop transition plans:</strong> Create phased approaches to implementing sustainable practices</li>
+                  <li><strong>Invest in precision agriculture:</strong> Use technology to optimize resource use</li>
+                  <li><strong>Establish monitoring systems:</strong> Track environmental, economic, and social impacts</li>
+                  <li><strong>Engage in certification programs:</strong> Access premium markets for sustainable products</li>
+              </ul>
+              
+              <h3>Policy and Support Mechanisms</h3>
+              <ul>
+                  <li><strong>Financial incentives:</strong> Subsidies, tax benefits, and payments for ecosystem services</li>
+                  <li><strong>Extension services:</strong> Technical support and training for farmers</li>
+                  <li><strong>Research and development:</strong> Investment in sustainable agriculture innovations</li>
+                  <li><strong>Market development:</strong> Creating demand for sustainably produced food</li>
+              </ul>
+          </section>
+          
+          <section id="resources" class="content-section">
+              <div class="section-header">
+                  <h2 class="section-title">Resources</h2>
+              </div>
+              
+              <p>Explore these resources to learn more about sustainable agriculture and how to implement these practices:</p>
+              
+              <ul class="resources-list">
+                  <li><a href="#">Sustainable Agriculture Handbook</a> - Comprehensive guide to implementing sustainable practices in different contexts</li>
+                  <li><a href="#">Water-Smart Farming Guide</a> - Detailed information on water conservation techniques for agriculture</li>
+                  <li><a href="#">Integrated Pest Management Toolkit</a> - Resources for implementing IPM in various cropping systems</li>
+                  <li><a href="#">Soil Health Assessment Guide</a> - Tools and methods for evaluating and improving soil health</li>
+                  <li><a href="#">Sustainable Agriculture Certification Programs</a> - Information on various certification options and requirements</li>
+                  <li><a href="#">Funding Opportunities for Sustainable Agriculture</a> - Directory of grants, loans, and other financial resources</li>
+              </ul>
+          </section>
+          
+          <a href="#top" class="go-to-top" aria-label="Go to top of page">↑</a>
+      </div>
+  </main>
+
+  <footer>
+      <div class="container footer-content">
+          <div class="footer-section">
+              <h4>About Us</h4>
+              <p>We are dedicated to supporting UN SDG #2: Zero Hunger through education, advocacy, and action.</p>
+          </div>
+          <div class="footer-section">
+              <h4>Quick Links</h4>
+              <a href="home.html" class="footer-link">Home</a>
+              <a href="volunteer.html" class="footer-link">Volunteer</a>
+              <a href="feedback.html" class="footer-link">Feedback</a>
+              <a href="sitemap.html" class="footer-link">Sitemap</a>
+          </div>
+          <div class="footer-section">
+              <h4>Page Editors</h4>
+              <a href="pageEditor_ST1.html" class="footer-link">Student 1's Page</a>
+              <a href="pageEditor_ST2.html" class="footer-link">Student 2's Page</a>
+              <a href="pageEditor_ST3.html" class="footer-link">Student 3's Page</a>
+              <a href="pageEditor_ST4.html" class="footer-link">Student 4's Page</a>
+          </div>
+      </div>
+      <div class="copyright">
+          <p>&copy; 2025 Zero Hunger Initiative. All rights reserved.</p>
+          <p>This website meets accessibility standards. <a href="validation_ST2.html">Validation</a></p>
+      </div>
+  </footer>
+</body>
+</html>
+

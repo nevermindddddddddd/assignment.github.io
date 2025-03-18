@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Zero Hunger Initiative</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        .profile-container {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 2rem;
+        }
+
+        @media (max-width: 768px) {
+            .profile-container {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        .profile-sidebar {
+            background-color: var(--neutral-100);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .profile-avatar {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 1.5rem;
+            border: 5px solid var(--primary);
+        }
+
+        .profile-name {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .profile-role {
+            color: var(--neutral-600);
+            margin-bottom: 1.5rem;
+        }
+
+        .profile-main {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .profile-section {
+            background-color: var(--neutral-100);
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .profile-section h2 {
+            margin-top: 0;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .skill-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .skill-item {
+            margin-bottom: 1rem;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 0.5rem;
+        }
+
+        .skill-bar {
+            height: 10px;
+            background-color: var(--neutral-300);
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background-color: var(--primary);
+        }
+
+        .goals-list {
+            list-style: none;
+            padding: 0;
+        }
+
+        .goals-list li {
+            margin-bottom: 1rem;
+            padding-left: 1.5rem;
+            position: relative;
+        }
+
+        .goals-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--success);
+        }
+
+        .volunteer-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .volunteer-badge {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: var(--neutral-200);
+            border-radius: 8px;
+            padding: 1rem;
+            width: calc(33.333% - 1rem);
+            transition: transform 0.3s ease;
+        }
+
+        .volunteer-badge:hover {
+            transform: translateY(-5px);
+        }
+
+        @media (max-width: 768px) {
+            .volunteer-badge {
+                width: calc(50% - 1rem);
+            }
+        }
+
+        .volunteer-badge i {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+            color: var(--primary);
+        }
+
+        .interests-section {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+        }
+
+        .interest-item {
+            display: flex;
+            align-items: center;
+            background-color: var(--neutral-200);
+            border-radius: 20px;
+            padding: 0.5rem 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .interest-item:hover {
+            background-color: var(--primary-light);
+        }
+
+        .interest-item i {
+            margin-right: 0.5rem;
+            color: var(--primary);
+        }
+
+        .calendar-section {
+            margin-top: 2rem;
+        }
+
+        .calendar {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .calendar th {
+            background-color: var(--primary);
+            color: var(--neutral-900);
+            padding: 0.75rem;
+            text-align: center;
+        }
+
+        .calendar td {
+            padding: 0.75rem;
+            text-align: center;
+            border: 1px solid var(--neutral-300);
+        }
+
+        .calendar .available {
+            background-color: rgba(76, 175, 80, 0.2);
+        }
+
+        .calendar .unavailable {
+            background-color: rgba(244, 67, 54, 0.2);
+        }
+
+        .contact-form {
+            margin-top: 2rem;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        @media (max-width: 768px) {
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <img src="/placeholder.svg?height=50&width=50" alt="Zero Hunger Logo">
+                    <h1>Zero Hunger Initiative</h1>
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="table.html">Programs</a></li>
+                        <li><a href="profile.html" class="active">Profile</a></li>
+                        <li><a href="feedback.html">Feedback</a></li>
+                        <li><a href="sitemap.html">Sitemap</a></li>
+                        <li><a href="team.html">Team</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="container">
+            <div class="profile-container">
+                <div class="profile-sidebar">
+                    <img src="/placeholder.svg?height=150&width=150" alt="User Avatar" class="profile-avatar">
+                    <h1 class="profile-name">Alex Johnson</h1>
+                    <p class="profile-role">Food Security Advocate</p>
+                    <p>"Working to create sustainable food systems and end hunger in our communities."</p>
+                </div>
+
+                <div class="profile-main">
+                    <section class="profile-section">
+                        <h2>Skills & Experience</h2>
+                        <ul class="skill-list">
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>Community Organizing</span>
+                                    <span>90%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 90%;"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>Urban Gardening</span>
+                                    <span>85%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 85%;"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>Nutrition Education</span>
+                                    <span>75%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 75%;"></div>
+                                </div>
+                            </li>
+                            <li class="skill-item">
+                                <div class="skill-name">
+                                    <span>Food Policy Advocacy</span>
+                                    <span>80%</span>
+                                </div>
+                                <div class="skill-bar">
+                                    <div class="skill-progress" style="width: 80%;"></div>
+                                </div>
+                            </li>
+                        </ul>
+
+                        <h3 class="mt-4">Goals</h3>
+                        <ul class="goals-list">
+                            <li>Establish 5 new community gardens in food desert areas</li>
+                            <li>Train 100 new volunteers in sustainable agriculture practices</li>
+                            <li>Advocate for improved food security policies at the local level</li>
+                            <li>Reduce food waste in the community by 25%</li>
+                        </ul>
+                    </section>
+
+                    <section class="profile-section">
+                        <h2>UN Goals I Support</h2>
+                        <div class="volunteer-section">
+                            <div class="volunteer-badge">
+                                <i aria-hidden="true">🍲</i>
+                                <span>Zero Hunger</span>
+                            </div>
+                            <div class="volunteer-badge">
+                                <i aria-hidden="true">🌱</i>
+                                <span>Sustainable Agriculture</span>
+                            </div>
+                            <div class="volunteer-badge">
+                                <i aria-hidden="true">🌍</i>
+                                <span>Climate Action</span>
+                            </div>
+                            <div class="volunteer-badge">
+                                <i aria-hidden="true">💧</i>
+                                <span>Clean Water</span>
+                            </div>
+                            <div class="volunteer-badge">
+                                <i aria-hidden="true">🤝</i>
+                                <span>Partnerships</span>
+                            </div>
+                            <div class="volunteer-badge">
+                                <i aria-hidden="true">🏙️</i>
+                                <span>Sustainable Cities</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="profile-section">
+                        <h2>Interests</h2>
+                        <div class="interests-section">
+                            <div class="interest-item">
+                                <i aria-hidden="true">🌿</i>
+                                <span>Urban Farming</span>
+                            </div>
+                            <div class="interest-item">
+                                <i aria-hidden="true">🍎</i>
+                                <span>Nutrition</span>
+                            </div>
+                            <div class="interest-item">
+                                <i aria-hidden="true">♻️</i>
+                                <span>Composting</span>
+                            </div>
+                            <div class="interest-item">
+                                <i aria-hidden="true">📚</i>
+                                <span>Food Education</span>
+                            </div>
+                            <div class="interest-item">
+                                <i aria-hidden="true">🧑‍🍳</i>
+                                <span>Cooking</span>
+                            </div>
+                            <div class="interest-item">
+                                <i aria-hidden="true">🌎</i>
+                                <span>Environmental Justice</span>
+                            </div>
+                        </div>
+                    </section>
+
+                    <section class="profile-section">
+                        <h2>Availability Calendar</h2>
+                        <div class="calendar-section">
+                            <table class="calendar">
+                                <thead>
+                                    <tr>
+                                        <th>Monday</th>
+                                        <th>Tuesday</th>
+                                        <th>Wednesday</th>
+                                        <th>Thursday</th>
+                                        <th>Friday</th>
+                                        <th>Saturday</th>
+                                        <th>Sunday</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="unavailable">Morning</td>
+                                        <td class="available">Morning</td>
+                                        <td class="unavailable">Morning</td>
+                                        <td class="available">Morning</td>
+                                        <td class="unavailable">Morning</td>
+                                        <td class="available">Morning</td>
+                                        <td class="available">Morning</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="available">Afternoon</td>
+                                        <td class="unavailable">Afternoon</td>
+                                        <td class="available">Afternoon</td>
+                                        <td class="unavailable">Afternoon</td>
+                                        <td class="available">Afternoon</td>
+                                        <td class="available">Afternoon</td>
+                                        <td class="available">Afternoon</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="available">Evening</td>
+                                        <td class="available">Evening</td>
+                                        <td class="unavailable">Evening</td>
+                                        <td class="available">Evening</td>
+                                        <td class="available">Evening</td>
+                                        <td class="unavailable">Evening</td>
+                                        <td class="unavailable">Evening</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </section>
+
+                    <section class="profile-section">
+                        <h2>Contact Me</h2>
+                        <div class="contact-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="name">Your Name</label>
+                                    <input type="text" id="name" name="name" required>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email">Your Email</label>
+                                    <input type="email" id="email" name="email" required>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="subject">Subject</label>
+                                <input type="text" id="subject" name="subject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="message">Message</label>
+                                <textarea id="message" name="message" rows="5" required></textarea>
+                            </div>
+                            <button type="submit" class="btn">Send Message</button>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Zero Hunger Initiative</h3>
+                    <p>Working together to achieve SDG 2: Zero Hunger by 2030.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="home.html">Home</a></li>
+                        <li><a href="volunteer.html">Volunteer</a></li>
+                        <li><a href="table.html">Programs</a></li>
+                        <li><a href="profile.html">Profile</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Page Editors</h3>
+                    <ul>
+                        <li><a href="pageEditor_ST1.html">Student 1</a></li>
+                        <li><a href="pageEditor_ST2.html">Student 2</a></li>
+                        <li><a href="pageEditor_ST3.html">Student 3</a></li>
+                        <li><a href="pageEditor_ST4.html">Student 4</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Zero Hunger Initiative. All rights reserved.</p>
+                <p>This page is maintained by <a href="pageEditor_ST4.html">Student 4</a></p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>

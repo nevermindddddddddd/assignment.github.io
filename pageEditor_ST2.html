@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Zero Hunger Initiative - Page Editor (Student 2)</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+      .editor-container {
+          max-width: 1000px;
+          margin: 0 auto;
+          padding: 2rem;
+      }
+      
+      .editor-header {
+          background-color: var(--primary-light);
+          border-radius: 8px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          text-align: center;
+      }
+      
+      .editor-nav {
+          background-color: white;
+          border-radius: 8px;
+          padding: 1.5rem;
+          margin-bottom: 2rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .editor-nav-title {
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+          color: var(--primary-dark);
+          border-bottom: 2px solid var(--primary-light);
+          padding-bottom: 0.5rem;
+      }
+      
+      .editor-nav-list {
+          list-style: none;
+          padding: 0;
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+      }
+      
+      .editor-nav-list li a {
+          display: block;
+          padding: 0.5rem 1rem;
+          background-color: var(--neutral-200);
+          border-radius: 4px;
+          transition: all 0.3s ease;
+      }
+      
+      .editor-nav-list li a:hover {
+          background-color: var(--primary-light);
+          text-decoration: none;
+      }
+      
+      .editor-section {
+          background-color: white;
+          border-radius: 8px;
+          padding: 2rem;
+          margin-bottom: 2rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .section-title {
+          color: var(--primary-dark);
+          margin-bottom: 1rem;
+          border-bottom: 2px solid var(--primary-light);
+          padding-bottom: 0.5rem;
+      }
+      
+      .implementation-list {
+          list-style: none;
+          padding: 0;
+          margin-bottom: 1.5rem;
+      }
+      
+      .implementation-list li {
+          margin-bottom: 0.5rem;
+          padding-left: 1.5rem;
+          position: relative;
+      }
+      
+      .implementation-list li::before {
+          content: "✓";
+          position: absolute;
+          left: 0;
+          color: var(--primary);
+      }
+      
+      .code-example {
+          background-color: var(--neutral-800);
+          color: var(--neutral-200);
+          padding: 1.5rem;
+          border-radius: 8px;
+          overflow-x: auto;
+          margin: 1.5rem 0;
+          font-family: monospace;
+      }
+      
+      .reference-list {
+          list-style: none;
+          padding: 0;
+      }
+      
+      .reference-list li {
+          margin-bottom: 1rem;
+          padding-left: 1.5rem;
+          position: relative;
+      }
+      
+      .reference-list li::before {
+          content: "[*]";
+          position: absolute;
+          left: 0;
+          color: var(--primary);
+      }
+      
+      .tag-highlight {
+          color: #e06c75;
+      }
+      
+      .attribute-highlight {
+          color: #d19a66;
+      }
+      
+      .value-highlight {
+          color: #98c379;
+      }
+      
+      .comment-highlight {
+          color: #7f848e;
+      }
+      
+      .go-to-top {
+          position: fixed;
+          bottom: 2rem;
+          right: 2rem;
+          background-color: var(--primary);
+          color: var(--neutral-900);
+          width: 50px;
+          height: 50px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          font-size: 1.5rem;
+          box-shadow: var(--box-shadow);
+          transition: all 0.3s ease;
+          z-index: 99;
+      }
+      
+      .go-to-top:hover {
+          background-color: var(--primary-dark);
+          color: var(--neutral-100);
+      }
+      
+      .design-example {
+          border: 1px solid var(--neutral-300);
+          border-radius: 8px;
+          padding: 1rem;
+          margin: 1.5rem 0;
+      }
+      
+      .design-example img {
+          max-width: 100%;
+          border-radius: 4px;
+          margin-bottom: 1rem;
+      }
+      
+      .color-palette {
+          display: flex;
+          flex-wrap: wrap;
+          gap: 1rem;
+          margin: 1.5rem 0;
+      }
+      
+      .color-swatch {
+          width: 100px;
+          text-align: center;
+      }
+      
+      .color-box {
+          height: 100px;
+          border-radius: 8px;
+          margin-bottom: 0.5rem;
+          box-shadow: var(--box-shadow);
+      }
+      
+      .color-name {
+          font-weight: 500;
+      }
+      
+      .color-value {
+          font-size: 0.875rem;
+          color: var(--neutral-600);
+          font-family: monospace;
+      }
+  </style>
+</head>
+<body>
+  <header>
+      <div class="container header-content">
+          <div class="logo">
+              <img src="d:\College\WEB DEV ASSIGNMENT 2025\TEAM PHOTO\removed.png" alt="Zero Hunger Initiative Logo">
+              <h1 class="site-title">Zero Hunger Initiative</h1>
+          </div>
+      </div>
+      <nav>
+          <div class="container nav-container">
+              <ul class="nav-list">
+                  <li class="nav-item"><a href="home.html" class="nav-link">Home</a></li>
+                  <li class="nav-item"><a href="volunteer.html" class="nav-link">Volunteer</a></li>
+                  <li class="nav-item"><a href="table.html" class="nav-link">Statistics</a></li>
+                  <li class="nav-item"><a href="profile.html" class="nav-link">User Profile</a></li>
+                  <li class="nav-item"><a href="feedback.html" class="nav-link">Feedback</a></li>
+                  <li class="nav-item"><a href="sitemap.html" class="nav-link">Sitemap</a></li>
+                  <li class="nav-item"><a href="team.html" class="nav-link">Our Team</a></li>
+              </ul>
+          </div>
+      </nav>
+  </header>
+
+  <main>
+      <div class="editor-container">
+          <div class="editor-header" id="top">
+              <h1>Page Editor: Arnav</h1>
+              <p>Documentation of pages implemented and techniques used</p>
+          </div>
+          
+          <div class="editor-nav">
+              <h2 class="editor-nav-title">Page Navigation</h2>
+              <ul class="editor-nav-list">
+                  <li><a href="#overview">Overview</a></li>
+                  <li><a href="#design-system">Design System</a></li>
+                  <li><a href="#home-page">Home Page</a></li>
+                  <li><a href="#statistics-table">Statistics Table</a></li>
+                  <li><a href="#content-page">Content Page</a></li>
+                  <li><a href="#challenges">Challenges & Lessons</a></li>
+                  <li><a href="#accessibility">Accessibility</a></li>
+                  <li><a href="#compliance">Compliance</a></li>
+                  <li><a href="#references">References</a></li>
+              </ul>
+          </div>
+          
+          <section id="overview" class="editor-section">
+              <h2 class="section-title">Overview</h2>
+              <p>As Student 2 on this project, I was responsible for implementing the following pages and components:</p>
+              <ul class="implementation-list">
+                  <li><strong>Website Template & Navigation</strong> - Created the global styling and navigation structure</li>
+                  <li><a href="home.html" target="_blank">Home Page</a> (<a href="validation_ST2.html#home">Validation</a>)</li>
+                  <li><a href="table.html" target="_blank">Statistics Table</a> (<a href="validation_ST2.html#table">Validation</a>)</li>
+                  <li><a href="content_ST2.html" target="_blank">Content Page: Sustainable Agriculture</a> (<a href="validation_ST2.html#content">Validation</a>)</li>
+              </ul>
+              <p>My focus was on creating a cohesive visual design system, implementing responsive layouts, and ensuring data was presented in an accessible and engaging way.</p>
+          </section>
+          
+          <section id="design-system" class="editor-section">
+              <h2 class="section-title">Design System</h2>
+              <h3>Color Palette</h3>
+              <p>I developed a color palette based on the Zero Hunger SDG colors, with primary colors in gold/yellow and secondary colors in green to represent sustainability:</p>
+              
+              <div class="color-palette">
+                  <div class="color-swatch">
+                      <div class="color-box" style="background-color: #e5b722;"></div>
+                      <div class="color-name">Primary</div>
+                      <div class="color-value">#e5b722</div>
+                  </div>
+                  <div class="color-swatch">
+                      <div class="color-box" style="background-color: #f7d967;"></div>
+                      <div class="color-name">Primary Light</div>
+                      <div class="color-value">#f7d967</div>
+                  </div>
+                  <div class="color-swatch">
+                      <div class="color-box" style="background-color: #c49000;"></div>
+                      <div class="color-name">Primary Dark</div>
+                      <div class="color-value">#c49000</div>
+                  </div>
+                  <div class="color-swatch">
+                      <div class="color-box" style="background-color: #4a9334;"></div>
+                      <div class="color-name">Secondary</div>
+                      <div class="color-value">#4a9334</div>
+                  </div>
+                  <div class="color-swatch">
+                      <div class="color-box" style="background-color: #6cb553;"></div>
+                      <div class="color-name">Secondary Light</div>
+                      <div class="color-value">#6cb553</div>
+                  </div>
+                  <div class="color-swatch">
+                      <div class="color-box" style="background-color: #2b6d1a;"></div>
+                      <div class="color-name">Secondary Dark</div>
+                      <div class="color-value">#2b6d1a</div>
+                  </div>
+              </div>
+              
+              <p>I also created a neutral color scale from white to dark gray for text, backgrounds, and UI elements:</p>
+              
+              <div class="color-palette">
+                  <div class="color-swatch">
+                      <div class="color-box" style="background-color: #ffffff;"></div>
+                      <div class="color-name">Neutral 100</div>
+                      <div class="color-value">#ffffff</div>
+                  </div>
+                  <div class="color-swatch">
+                      <div class="color-box" style="background-color: #f5f5f5;"></div>
+                      <div class="color-name">Neutral 200</div>
+                      <div class="color-value">#f5f5f5</div>
+                  </div>
+                  <div class="color-swatch">
+                      <div class="color-box" style="background-color: #e0e0e0;"></div>
+                      <div class="color-name">Neutral 300</div>
+                      <div class="color-value">#e0e0e0</div>
+                  </div>
+                  <div class="color-swatch">
+                      <div class="color-box" style="background-color: #9e9e9e;"></div>
+                      <div class="color-name">Neutral 500</div>
+                      <div class="color-value">#9e9e9e</div>
+                  </div>
+                  <div class="color-swatch">
+                      <div class="color-box" style="background-color: #616161;"></div>
+                      <div class="color-name">Neutral 700</div>
+                      <div class="color-value">#616161</div>
+                  </div>
+                  <div class="color-swatch">
+                      <div class="color-box" style="background-color: #212121;"></div>
+                      <div class="color-name">Neutral 900</div>
+                      <div class="color-value">#212121</div>
+                  </div>
+              </div>
+              
+              <h3>Typography</h3>
+              <p>I selected a clean, readable font system with Roboto as the primary font and Open Sans as the secondary font. This combination provides good readability across devices and screen sizes.</p>
+              
+              <div class="code-example">
+                  <pre>:root {
+  --font-primary: "Roboto", sans-serif;
+  --font-secondary: "Open Sans", sans-serif;
+}</pre>
+              </div>
+              
+              <h3>Component Library</h3>
+              <p>I developed a set of reusable components to ensure consistency across the website:</p>
+              <ul>
+                  <li><strong>Buttons</strong> - Primary, secondary, and neutral variants</li>
+                  <li><strong>Cards</strong> - For content display with consistent styling</li>
+                  <li><strong>Navigation</strong> - Responsive navigation system</li>
+                  <li><strong>Tables</strong> - Styled tables with responsive behavior</li>
+                  <li><strong>Forms</strong> - Consistent form elements and styling</li>
+              </ul>
+          </section>
+          
+          <section id="home-page" class="editor-section">
+              <h2 class="section-title">Home Page</h2>
+              <h3>Purpose & Requirements</h3>
+              <p>The home page serves as the main entry point to the website, providing an overview of the Zero Hunger Initiative and directing users to key content areas. It needed to be visually engaging while clearly communicating the mission and impact of the initiative.</p>
+              
+              <h3>Technical Implementation</h3>
+              <p>Key HTML elements and techniques used:</p>
+              <ul>
+                  <li><strong>Hero Section</strong> - Created a full-width hero section with background image and overlay for improved text readability</li>
+                  <li><strong>CSS Grid</strong> - Implemented a responsive grid for the content gallery section</li>
+                  <li><strong>Card Components</strong> - Designed interactive cards with hover effects for content navigation</li>
+                  <li><strong>Statistics Display</strong> - Created visually impactful statistics with large numbers and supporting text</li>
+              </ul>
+              
+              <h4>Hero Section Implementation</h4>
+              <div class="code-example">
+                  <pre><span class="tag-highlight">&lt;section</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"hero"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"container hero-content"</span><span class="tag-highlight">&gt;</span>
+      <span class="tag-highlight">&lt;h2</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"hero-title"</span><span class="tag-highlight">&gt;</span>Building a World Without Hunger<span class="tag-highlight">&lt;/h2&gt;</span>
+      <span class="tag-highlight">&lt;p</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"hero-subtitle"</span><span class="tag-highlight">&gt;</span>Supporting UN Sustainable Development Goal #2: Zero Hunger<span class="tag-highlight">&lt;/p&gt;</span>
+      <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"cta-buttons"</span><span class="tag-highlight">&gt;</span>
+          <span class="tag-highlight">&lt;a</span> <span class="attribute-highlight">href</span>=<span class="value-highlight">"volunteer.html"</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"btn btn-primary"</span><span class="tag-highlight">&gt;</span>Volunteer Now<span class="tag-highlight">&lt;/a&gt;</span>
+          <span class="tag-highlight">&lt;a</span> <span class="attribute-highlight">href</span>=<span class="value-highlight">"#learn-more"</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"btn btn-secondary"</span><span class="tag-highlight">&gt;</span>Learn More<span class="tag-highlight">&lt;/a&gt;</span>
+      <span class="tag-highlight">&lt;/div&gt;</span>
+  <span class="tag-highlight">&lt;/div&gt;</span>
+<span class="tag-highlight">&lt;/section&gt;</span></pre>
+              </div>
+              
+              <h4>CSS for Content Gallery</h4>
+              <div class="code-example">
+                  <pre>.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.gallery-item {
+  position: relative;
+  overflow: hidden;
+  border-radius: 8px;
+  box-shadow: var(--box-shadow);
+  transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+  transform: translateY(-10px);
+}</pre>
+              </div>
+          </section>
+          
+          <section id="statistics-table" class="editor-section">
+              <h2 class="section-title">Statistics Table</h2>
+              <h3>Purpose & Requirements</h3>
+              <p>The Statistics Table page presents key data on hunger and food security in a structured, accessible format. The challenge was to make complex data easy to understand while ensuring the table remained accessible and responsive across devices.</p>
+              
+              <h3>Technical Implementation</h3>
+              <p>Key HTML elements and techniques used:</p>
+              <ul>
+                  <li><strong>Semantic Table Structure</strong> - Used proper HTML table elements (thead, tbody, th) with appropriate scope attributes</li>
+                  <li><strong>Table Caption</strong> - Added a descriptive caption for screen readers</li>
+                  <li><strong>Row and Column Spanning</strong> - Implemented colspan and rowspan to create a more complex table structure</li>
+                  <li><strong>Visual Hierarchy</strong> - Used background colors and typography to create visual hierarchy within the table</li>
+                  <li><strong>Responsive Design</strong> - Ensured the table remained usable on smaller screens</li>
+              </ul>
+              
+              <h4>Table Structure Implementation</h4>
+              <div class="code-example">
+                  <pre><span class="tag-highlight">&lt;table</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"stats-table"</span> <span class="attribute-highlight">aria-label</span>=<span class="value-highlight">"Food security statistics by region"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;caption</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"table-caption"</span><span class="tag-highlight">&gt;</span>Global Food Security Comparison (2023-2024)<span class="tag-highlight">&lt;/caption&gt;</span>
+  <span class="tag-highlight">&lt;thead&gt;</span>
+      <span class="tag-highlight">&lt;tr&gt;</span>
+          <span class="tag-highlight">&lt;th</span> <span class="attribute-highlight">scope</span>=<span class="value-highlight">"col"</span><span class="tag-highlight">&gt;</span><span class="tag-highlight">&lt;img</span> <span class="attribute-highlight">src</span>=<span class="value-highlight">"/placeholder.svg?height=30&width=30"</span> <span class="attribute-highlight">alt</span>=<span class="value-highlight">"Region"</span> <span class="attribute-highlight">title</span>=<span class="value-highlight">"Geographic Region"</span><span class="tag-highlight">&gt;</span>Region<span class="tag-highlight">&lt;/th&gt;</span>
+          <span class="tag-highlight">&lt;th</span> <span class="attribute-highlight">scope</span>=<span class="value-highlight">"col"</span><span class="tag-highlight">&gt;</span><span class="tag-highlight">&lt;img</span> <span class="attribute-highlight">src</span>=<span class="value-highlight">"/placeholder.svg?height=30&width=30"</span> <span class="attribute-highlight">alt</span>=<span class="value-highlight">"Undernourished"</span> <span class="attribute-highlight">title</span>=<span class="value-highlight">"Percentage of Population Undernourished"</span><span class="tag-highlight">&gt;</span>Undernourished (%)<span class="tag-highlight">&lt;/th&gt;</span>
+          <span class="comment-highlight">&lt;!-- Additional columns --&gt;</span>
+      <span class="tag-highlight">&lt;/tr&gt;</span>
+  <span class="tag-highlight">&lt;/thead&gt;</span>
+  <span class="tag-highlight">&lt;tbody&gt;</span>
+      <span class="tag-highlight">&lt;tr&gt;</span>
+          <span class="tag-highlight">&lt;td</span> <span class="attribute-highlight">colspan</span>=<span class="value-highlight">"5"</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"merged-cell"</span><span class="tag-highlight">&gt;</span>Developing Regions<span class="tag-highlight">&lt;/td&gt;</span>
+      <span class="tag-highlight">&lt;/tr&gt;</span>
+      <span class="comment-highlight">&lt;!-- Table rows with data --&gt;</span>
+  <span class="tag-highlight">&lt;/tbody&gt;</span>
+<span class="tag-highlight">&lt;/table&gt;</span></pre>
+              </div>
+              
+              <h4>CSS for Table Styling</h4>
+              <div class="code-example">
+                  <pre>.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 2rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.stats-table th {
+  background-color: var(--primary);
+  color: var(--neutral-900);
+  font-weight: 700;
+  text-align: left;
+  padding: 1rem;
+  position: relative;
+}
+
+.merged-cell {
+  background-color: var(--primary-light) !important;
+  text-align: center;
+  font-weight: 700;
+}</pre>
+              </div>
+          </section>
+          
+          <section id="content-page" class="editor-section">
+              <h2 class="section-title">Content Page: Sustainable Agriculture</h2>
+              <h3>Purpose & Requirements</h3>
+              <p>The Sustainable Agriculture content page provides in-depth information about sustainable farming practices that support food security. The page needed to present complex information in an accessible, engaging format with visual elements to support the content.</p>
+              
+              <h3>Technical Implementation</h3>
+              <p>Key HTML elements and techniques used:</p>
+              <ul>
+                  <li><strong>Content Structure</strong> - Used semantic HTML elements to create a clear content hierarchy</li>
+                  <li><strong>Comparison Table</strong> - Created a structured table to compare different aspects of sustainable agriculture</li>
+                  <li><strong>Card Layout</strong> - Implemented a card-based layout for presenting different agricultural practices</li>
+                  <li><strong>Statistics Grid</strong> - Designed a responsive grid for displaying key statistics</li>
+                  <li><strong>Internal Navigation</strong> - Added anchor links for easy navigation within the long-form content</li>
+              </ul>
+              
+              <h4>Practice Card Implementation</h4>
+              <div class="code-example">
+                  <pre><span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"practice-card"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"practice-image"</span><span class="tag-highlight">&gt;</span>
+      <span class="tag-highlight">&lt;img</span> <span class="attribute-highlight">src</span>=<span class="value-highlight">"/placeholder.svg?height=300&width=500"</span> <span class="attribute-highlight">alt</span>=<span class="value-highlight">"Crop rotation with different plants in sequential seasons"</span><span class="tag-highlight">&gt;</span>
+  <span class="tag-highlight">&lt;/div&gt;</span>
+  <span class="tag-highlight">&lt;div</span> <span class="attribute-highlight">class</span>=<span class="value-highlight">"practice-content"</span><span class="tag-highlight">&gt;</span>
+      <span class="tag-highlight">&lt;h3&gt;</span>Crop Rotation<span class="tag-highlight">&lt;/h3&gt;</span>
+      <span class="tag-highlight">&lt;p&gt;</span>Crop rotation involves changing the type of crops grown in a particular area in sequential seasons. This practice helps manage soil fertility, reduce soil erosion, and control pests and diseases naturally.<span class="tag-highlight">&lt;/p&gt;</span>
+      
+      <span class="tag-highlight">&lt;h4&gt;</span>Benefits:<span class="tag-highlight">&lt;/h4&gt;</span>
+      <span class="tag-highlight">&lt;ul&gt;</span>
+          <span class="tag-highlight">&lt;li&gt;</span>Improves soil structure and fertility<span class="tag-highlight">&lt;/li&gt;</span>
+          <span class="tag-highlight">&lt;li&gt;</span>Reduces dependency on synthetic fertilizers<span class="tag-highlight">&lt;/li&gt;</span>
+          <span class="tag-highlight">&lt;li&gt;</span>Disrupts pest and disease cycles<span class="tag-highlight">&lt;/li&gt;</span>
+          <span class="tag-highlight">&lt;li&gt;</span>Increases biodiversity<span class="tag-highlight">&lt;/li&gt;</span>
+      <span class="tag-highlight">&lt;/ul&gt;</span>
+  <span class="tag-highlight">&lt;/div&gt;</span>
+<span class="tag-highlight">&lt;/div&gt;</span></pre>
+              </div>
+          </section>
+          
+          <section id="challenges" class="editor-section">
+              <h2 class="section-title">Challenges & Lessons Learned</h2>
+              <h3>Challenges Faced</h3>
+              <ol>
+                  <li><strong>Table Responsiveness:</strong> Making complex tables responsive while maintaining data relationships was challenging.</li>
+                  <li><strong>Design System Consistency:</strong> Ensuring consistent application of the design system across all pages required careful planning.</li>
+                  <li><strong>Performance Optimization:</strong> Balancing visual richness with performance, especially for image-heavy pages.</li>
+              </ol>
+              
+              <h3>Solutions & Lessons</h3>
+              <ol>
+                  <li>For tables, I implemented horizontal scrolling on small screens rather than restructuring the data, which preserved the data relationships.</li>
+                  <li>Created a comprehensive CSS variable system and component library to maintain consistency.</li>
+                  <li>Optimized images and implemented lazy loading for better performance.</li>
+              </ol>
+              
+              <p>These challenges taught me the importance of planning the information architecture before implementation and the value of creating reusable components for consistency and efficiency.</p>
+          </section>
+          
+          <section id="accessibility" class="editor-section">
+              <h2 class="section-title">Accessibility</h2>
+              <p>I prioritized accessibility in my implementations through the following measures:</p>
+              <ul>
+                  <li><strong>Semantic HTML:</strong> Used appropriate HTML elements to provide structural meaning.</li>
+                  <li><strong>ARIA Attributes:</strong> Added ARIA labels and descriptions where necessary, especially for tables and interactive elements.</li>
+                  <li><strong>Color Contrast:</strong> Ensured all text meets WCAG AA contrast requirements against its background.</li>
+                  <li><strong>Keyboard Navigation:</strong> Made all interactive elements accessible via keyboard.</li>
+                  <li><strong>Alternative Text:</strong> Provided descriptive alt text for all images.</li>
+                  <li><strong>Table Accessibility:</strong> Used proper table markup with captions, headers, and scope attributes.</li>
+              </ul>
+              <p>All pages were tested using the WAVE accessibility evaluation tool and keyboard navigation to identify and resolve potential issues.</p>
+          </section>
+          
+          <section id="compliance" class="editor-section">
+              <h2 class="section-title">Compliance</h2>
+              <p>The pages I implemented comply with Janet regulations governing web page publication in the following ways:</p>
+              <ul>
+                  <li><strong>Valid HTML5:</strong> All pages have been validated using the W3C Markup Validation Service.</li>
+                  <li><strong>Accessibility:</strong> Pages meet WCAG 2.1 Level AA standards for accessibility.</li>
+                  <li><strong>Responsive Design:</strong> All pages are responsive and function properly across different devices and screen sizes.</li>
+                  <li><strong>Cross-Browser Compatibility:</strong> Pages have been tested and function correctly in major browsers.</li>
+                  <li><strong>Performance:</strong> Pages load efficiently with optimized assets.</li>
+                  <li><strong>Content Standards:</strong> All content is appropriate, accurate, and properly attributed.</li>
+              </ul>
+          </section>
+          
+          <section id="references" class="editor-section">
+              <h2 class="section-title">References</h2>
+              <ul class="reference-list">
+                  <li><a href="https://www.w3.org/WAI/standards-guidelines/wcag/">Web Content Accessibility Guidelines (WCAG) 2.1</a> - Used for ensuring accessibility standards compliance.</li>
+                  <li><a href="https://sdgs.un.org/goals/goal2">UN Sustainable Development Goal 2: Zero Hunger</a> - Primary source for content and visual identity.</li>
+                  <li><a href="https://www.fao.org/sustainable-development-goals/goals/goal-2/en/">FAO: Zero Hunger Challenge</a> - Source for statistics and sustainable agriculture information.</li>
+                  <li><a href="https://developer.mozilla.org/en-US/docs/Learn/CSS/CSS_layout">MDN Web Docs: CSS Layout</a> - Reference for CSS grid and flexbox implementation.</li>
+                  <li><a href="https://www.w3.org/WAI/tutorials/tables/">W3C WAI: Tables Tutorial</a> - Guide for creating accessible tables.</li>
+              </ul>
+          </section>
+          
+          <a href="#top" class="go-to-top" aria-label="Go to top of page">↑</a>
+      </div>
+  </main>
+
+  <footer>
+      <div class="container footer-content">
+          <div class="footer-section">
+              <h4>About Us</h4>
+              <p>We are dedicated to supporting UN SDG #2: Zero Hunger through education, advocacy, and action.</p>
+          </div>
+          <div class="footer-section">
+              <h4>Quick Links</h4>
+              <a href="home.html" class="footer-link">Home</a><br>
+              <a href="volunteer.html" class="footer-link">Volunteer</a><br>
+              <a href="feedback.html" class="footer-link">Feedback</a><br>
+              <a href="sitemap.html" class="footer-link">Sitemap</a><br>
+          </div>
+          <div class="footer-section">
+              <h4>Page Editors</h4>
+              <a href="pageEditor_ST1.html" class="footer-link">Yusuke's Page</a><br>
+              <a href="pageEditor_ST2.html" class="footer-link">Arnav's Page</a><br>
+              <a href="pageEditor_ST3.html" class="footer-link">Pranav's Page</a><br>
+              <a href="pageEditor_ST4.html" class="footer-link">Ayur's Page</a><br>
+          </div>
+      </div>
+      <div class="copyright">
+          <p>&copy; 2025 Zero Hunger Initiative. All rights reserved.</p>
+          <p>This website meets accessibility standards. <a href="validation_ST2.html">Validation</a></p>
+      </div>
+  </footer>
+</body>
+</html>
+
